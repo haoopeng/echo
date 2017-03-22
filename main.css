@@ -1,0 +1,215 @@
+body {
+  font-family: Sans-Serif;
+}
+
+div#container {
+  width: 1040px;
+  height: 680px;
+  border: 1px solid #eee;
+  margin: 10px;
+}
+
+div#plot {
+  float: left;
+  width: 320px;
+  height: 200px;
+  background: #fff;
+  margin: 20px;
+}
+
+div#epicurves {
+  height: 180px;
+}
+
+div#plot-title {
+  height: 20px;
+  text-align: center;
+  font-size: 15px;
+}
+
+div#plot-xlable {
+  height: 10px;
+  text-align: right;
+  font-size: 15px;
+}
+
+/*div#counters {
+  float: left;
+  left: 100px;
+  height: 200px;
+  font-size: 14px;
+  position: relative;
+  top: 45px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}*/
+
+div#legend {
+  float: left;
+  width: 250px;
+  height: 120px;
+  margin: 20px;
+  margin-top: 40px;
+  position: relative;
+  padding: 20px;
+  border: 1px solid #ccc;
+  background: #fafafa;
+  font-size: 15px;
+}
+
+span#right {
+  float: right;
+}
+
+#legend ul li { display: inline; float: left; margin: 0 15px 0 0; text-align: left; }
+
+.symbol {
+  border-radius: 50%;
+  display: block;
+  cursor: pointer;
+  margin: 5px auto 0;
+  background-color: rgb(0, 89, 190);
+}
+.symbol.small { width: 10px; height: 10px; }
+.symbol.large  { width: 18px; height: 18px; }
+
+div#controls {
+  float: right;
+  height: 200px;
+  margin: 20px;
+  margin-left: 0px;
+  font-size: 36px;
+  text-align: right;
+}
+
+div#graph-layout {
+  float: left;
+  height: 400px;
+  width: 650px;
+  margin: 20px;
+  background: #fafafa;
+  border: 1px solid #eee;
+  clear: both;
+  position: relative;
+}
+
+div#chat-window {
+  float: right;
+  height: 400px;
+  width: 320px;
+  margin: 20px;
+  margin-left: 0px;
+  background: #fafafa;
+  border: 1px solid #eee;
+  /*clear: both;*/
+  position: relative;
+}
+
+span#crange, #prange, #arange, #lrange, #srange {
+  width: 50px;
+  padding: 2px;
+  font-size: 15px;
+  border: 1px solid #aaa;
+}
+
+input#confidence, #learning, #post, #rewire {
+  height: 9px;
+  width: 100px;
+}
+
+span#para_name {
+	color: #000000;
+  font-size: 15px;
+}
+
+
+/*span#counter_text {
+  color: #666;
+  font-size: 20px;
+}*/
+
+/*span#opinion, span#agent, span#iterate {
+  font-size: 36px;
+  font-weight: bold;
+  color: #735817;
+}*/
+
+circle.node {
+  stroke: #000;
+  stroke-width: 1px;
+  fill: #ff0;
+}
+
+line.link {
+  stroke: #333;
+  stroke-opacity: .2;
+  stroke-width: 1px;
+}
+
+/*span#start-text {
+  float: left;
+  font-size: 20px;
+  text-align: left;
+  color: #666;
+  padding: 5px;
+}*/
+
+button {
+  float: left;
+  font-size: 25px;
+}
+
+button#reset-button {
+  color: #666;
+}
+
+button#start-button {
+  color: #008000;
+}
+
+button#stop-button {
+  color: #FF0000;
+}
+
+span#speed-box {
+  float: left;
+  text-align: center;
+  font-size: 14px;
+  width: 120px;
+  height: 32px;
+  border: 1px solid #aaa;
+}
+
+input#speed {
+  float: center;
+  width: 100px;
+}
+
+/*a {
+  text-decoration: none;
+  font-size: 18px;
+  color: #00c6ff;
+}*/
+
+.tooltip {
+  display:block;
+  position:absolute;
+  max-width: 300px;
+  border:1px solid #333;
+  background-color:#161616;
+  border-radius:5px;
+  padding:10px;
+  color:#fff;
+  font-size:14px;
+  text-align: justify;
+  -webkit-hyphens: auto;
+  -moz-hyphens: auto;
+  -ms-hyphens: auto;
+  hyphens: auto;
+}
+
+div#credits {
+  text-align: right;
+  font-size: 14px;
+  padding: 5px;
+}

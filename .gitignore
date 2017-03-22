@@ -1,0 +1,80 @@
+# certain files
+
+reference/
+__pycache__
+
+# LaTeX
+*.aux
+*.bcf
+*.bbl
+*.blg
+*.synctex.gz
+*.toc
+*blx.bib
+*.fls
+*.fdb_latexmk
+*.out
+*.run.xml
+main.pdf
+supp.pdf
+*.log
+
+# Data files
+*.csv
+*.tsv
+*.txt
+
+# figures
+*.pdf
+*.ai
+*.png
+
+# Office files
+*.docx
+*.doc
+*.ppt
+*.pptx
+*.xls
+*.xlsx
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Compiled source #
+###################
+*.com
+*.class
+*.dll
+*.exe
+*.o
+*.so
+
+# Packages #
+############
+# it's better to unpack these files and commit the raw source
+# git has its own built in compression methods
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+
+# Logs and databases #
+######################
+*.log
+*.sql
+*.sqlite
+
+# OS generated files #
+######################
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+

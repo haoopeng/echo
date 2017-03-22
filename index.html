@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<meta charset="utf-8"/>
+<!-- <meta name="viewport" content="width=device-width"/> -->
+<html>
+
+<head>
+<link type="text/css" rel="stylesheet" href="main.css"/>
+<script type="text/javascript" src="jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="jquery.flot.min.js"></script>
+<script src="https://d3js.org/d3.v4.min.js" charset="utf-8"></script>
+<script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3-tip/0.7.1/d3-tip.min.js"></script>
+
+<script type="text/javascript">
+function showValue(newValue, span)
+{
+    document.getElementById(span).innerHTML = newValue;
+}
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function() {
+// Tooltip only Text
+$('.masterTooltip').hover(function(){
+        // Hover over code
+        var title = $(this).attr('title');
+        $(this).data('tipText', title).removeAttr('title');
+        $('<p class="tooltip"></p>')
+        .text(title)
+        .appendTo('body')
+        .fadeIn('slow');
+}, function() {
+        // Hover out code
+        $(this).attr('title', $(this).data('tipText'));
+        $('.tooltip').remove();
+}).mousemove(function(e) {
+        var mousex = e.pageX + 20; //Get X coordinates
+        var mousey = e.pageY + 10; //Get Y coordinates
+        $('.tooltip')
+        .css({ top: mousey, left: mousex })
+});
+});
+</script>
+
+<title>Social Media Echo Chamber</title>
+</head>
+
+<body>
+
+  <div id="container">
+
+    <div id="plot">
+      <div id="plot-title" class="masterTooltip" title="This plot tracks how the opinions of an agent’s friends become more or less different from the agent’s own opinion, on average. Decreasing diversity indicates an echo-chamber effect.">Average Diversity of Friend Opinions</div>
+      <div id="epicurves"></div>
+      <div id="plot-xlable">Time</div>
+    </div>
+
+<!--     <div id="counters">
+      <span id="counter_text">Iterated: </span><span id="iterate">0</span><br />
+      <span id="counter_text">AgentId: </span><span id="agent">NaN</span><br />
+      <span id="counter_text">Opinion: </span><span id="opinion">NaN</span>
+    </div> -->
+
+    <div id="legend">
+      Conservative<span id="right">Liberal</span>
+      <img src="https://raw.githubusercontent.com/d3/d3-scale-chromatic/master/img/RdBu.png" width="100%" height="20" alt="RdBu" style="max-width:100%;">
+      <ul>
+        <li>Less Popular<span class="symbol small"></span></li>
+        <li>More Popular<span class="symbol large"></span></li>
+      </ul>
+    </div>
+
+    <div id="controls">
+      <span id="para_name" class="masterTooltip" title="Opinions within this range from an agent’s own opinion are considered as concordant, otherwise as discordant. Neighbors who post concordant opinions can influence an agent’s own opinion. Furthermore, an agent will occasionally unfriend neighbors who post discordant opinions.">Concordant Opinion Range:</span><input id="confidence" type="range" min="0" max = "2" value="0.4" step="0.01" onchange="showValue(this.value, 'crange')" /><span id="crange">0.40</span><br />
+      <span id="para_name" class="masterTooltip" title="An agent’s opinion is updated to become a little more similar, on average, to those reflected in posts from concordant neighbors. The learning rate controls the strength of this influence.">Learning Rate:</span><input id="learning" type="range" min="0" max = "1" value="0.8" step="0.01" onchange="showValue(this.value, 'lrange')" /><span id="lrange">0.80</span><br />
+      <span id="para_name" class="masterTooltip" title="This parameter regulates how often an agent shares a new post reflecting their own opinion, rather than reposting a concordant neighbor’s message reflecting the neighbor’s opinion.">New Post Rate:</span><input id="post" type="range" min="0" max = "1" value="0.8" step="0.01" onchange="showValue(this.value, 'prange')" /><span id="prange">0.80</span><br />
+      <span id="para_name" class="masterTooltip" title="This parameter regulates how often an agent will unfriend a neighbor who posts discordant opinions, and replace it with a randomly selected new friend.">Unfriend Rate:</span><input id="rewire" type="range" min="0" max = "1" value="0.9" step="0.01" onchange="showValue(this.value, 'arange')" /><span id="arange">0.90</span><br />
+    </div>
+
+    <div id="graph-layout">
+      <!-- <span id="start-text">Click Start button to start!</span> -->
+      <button id="start-button">Start</button>
+      <button id="stop-button">Stop</button>
+      <button id="reset-button">Reset</button>
+      <span id="speed-box">Speed:<br /><input id="speed" type="range" min="0" max = "199" value="100" step="1" /></span>
+    </div>
+
+    <div id="chat-window">
+    </div>
+
+    <!-- <div id="credits"><a href="https://github.com/haoopeng/Social-Media-Echo-Chamber">source code</a> by <a href="http://haoopeng.github.io/">Hao Peng</a>, using <a href="http://mbostock.github.com/d3/">d3.js</a>, <a href="http://jquery.com/">jQuery</a>, <a href="http://www.flotcharts.org/">flot</a>, inspired by <a href="http://bl.ocks.org/ccattuto/raw/5892995/">this</a> and with advice from <a href="http://cnets.indiana.edu/fil/">Filippo Menczer</a></div> -->
+    </div>
+
+    <script type="text/javascript" src="main.js"></script>
+
+  </div>
+
+</body>
+
+</html>
