@@ -2,19 +2,100 @@ body {
   font-family: Sans-Serif;
 }
 
+div#title{
+  /*height: 30px;*/
+  width: 1040px;
+  font-size: 25px;
+  text-align: center;
+  color: #666;
+}
+
+span#subtitle {
+  font-size: 20px;
+  text-align: center;
+  color: #666;
+}
+
 div#container {
   width: 1040px;
-  height: 680px;
+  height: 660px;
   border: 1px solid #eee;
   margin: 10px;
 }
 
-div#plot {
+div#controls {
   float: left;
+  height: 200px;
+  margin: 20px;
+  margin-bottom: 0px;
+  font-size: 36px;
+  text-align: right;
+}
+
+div#controls-advanced {
+  font-size: 23px;
+  height: 90px;
+  margin-top: 10px;
+  padding-right: 40px;
+  border: 1px solid #ccc;
+}
+
+span#crange, #prange, #arange, #lrange, #srange {
+  width: 50px;
+  padding: 2px;
+  font-size: 15px;
+  border: 1px solid #aaa;
+}
+
+input#confidence, #learning, #post, #rewire {
+  height: 9px;
+  width: 100px;
+}
+
+span#para_name {
+  color: #000000;
+  font-size: 15px;
+}
+
+div#legend {
+  float: left;
+  width: 250px;
+  height: 120px;
+  margin: 20px;
+  margin-top: 40px;
+  margin-bottom: 0px;
+  position: relative;
+  padding: 20px;
+  border: 1px solid #ccc;
+  background: #fafafa;
+  font-size: 15px;
+}
+
+span#right {
+  float: right;
+}
+
+#legend ul li { display: inline; float: left; margin: 0 15px 0 0; text-align: left; }
+
+.symbol {
+  border-radius: 50%;
+  display: block;
+  cursor: pointer;
+  margin: 5px auto 0;
+  background-color: rgb(0, 89, 190);
+}
+.symbol.small { width: 10px; height: 10px; }
+.symbol.large  { width: 18px; height: 18px; }
+
+
+div#plot {
+  float: right;
   width: 320px;
   height: 200px;
   background: #fff;
   margin: 20px;
+  margin-bottom: 0px;
+  margin-left: 0px;
 }
 
 div#epicurves {
@@ -44,44 +125,6 @@ div#plot-xlable {
   margin-bottom: 20px;
 }*/
 
-div#legend {
-  float: left;
-  width: 250px;
-  height: 120px;
-  margin: 20px;
-  margin-top: 40px;
-  position: relative;
-  padding: 20px;
-  border: 1px solid #ccc;
-  background: #fafafa;
-  font-size: 15px;
-}
-
-span#right {
-  float: right;
-}
-
-#legend ul li { display: inline; float: left; margin: 0 15px 0 0; text-align: left; }
-
-.symbol {
-  border-radius: 50%;
-  display: block;
-  cursor: pointer;
-  margin: 5px auto 0;
-  background-color: rgb(0, 89, 190);
-}
-.symbol.small { width: 10px; height: 10px; }
-.symbol.large  { width: 18px; height: 18px; }
-
-div#controls {
-  float: right;
-  height: 200px;
-  margin: 20px;
-  margin-left: 0px;
-  font-size: 36px;
-  text-align: right;
-}
-
 div#graph-layout {
   float: left;
   height: 400px;
@@ -103,23 +146,6 @@ div#chat-window {
   border: 1px solid #eee;
   /*clear: both;*/
   position: relative;
-}
-
-span#crange, #prange, #arange, #lrange, #srange {
-  width: 50px;
-  padding: 2px;
-  font-size: 15px;
-  border: 1px solid #aaa;
-}
-
-input#confidence, #learning, #post, #rewire {
-  height: 9px;
-  width: 100px;
-}
-
-span#para_name {
-	color: #000000;
-  font-size: 15px;
 }
 
 
@@ -185,16 +211,16 @@ input#speed {
   width: 100px;
 }
 
-/*a {
+a {
   text-decoration: none;
-  font-size: 18px;
+  font-size: 14px;
   color: #00c6ff;
-}*/
+}
 
 .tooltip {
   display:block;
   position:absolute;
-  max-width: 300px;
+  max-width: 255px;
   border:1px solid #333;
   background-color:#161616;
   border-radius:5px;
@@ -209,7 +235,8 @@ input#speed {
 }
 
 div#credits {
+  width: 1042px;
   text-align: right;
   font-size: 14px;
-  padding: 5px;
+  padding: 10px;
 }

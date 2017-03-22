@@ -48,14 +48,21 @@ $('.masterTooltip').hover(function(){
 
 <body>
 
+  <div id="title">
+    EchoDemo<br /><span id="subtitle">(Modeling how echo chambers emerge from social media sharing)</span>
+  </div>
+
   <div id="container">
 
-    <div id="plot">
-      <div id="plot-title" class="masterTooltip" title="This plot tracks how the opinions of an agent’s friends become more or less different from the agent’s own opinion, on average. Decreasing diversity indicates an echo-chamber effect.">Average Diversity of Friend Opinions</div>
-      <div id="epicurves"></div>
-      <div id="plot-xlable">Time</div>
+    <div id="controls">
+      <span id="para_name" class="masterTooltip" title="Opinions within this range from an agent’s own opinion are considered as concordant opinions, otherwise as discordant ones. Neighbors who post concordant opinions can influence an agent’s own opinion. Furthermore, an agent will occasionally unfriend neighbors who post discordant opinions.">Concordant Opinion Range:</span><input id="confidence" type="range" min="0" max = "2" value="0.4" step="0.01" onchange="showValue(this.value, 'crange')" /><span id="crange">0.40</span><br />
+      <span id="para_name" class="masterTooltip" title="This parameter regulates how often an agent will unfriend a neighbor who posts discordant opinions, and replace it with a randomly selected new friend.">Unfriend Rate:</span><input id="rewire" type="range" min="0" max = "1" value="0.9" step="0.01" onchange="showValue(this.value, 'arange')" /><span id="arange">0.90</span><br />
+      <div id="controls-advanced">
+        <span id="para_name">Advanced Features</span><br />
+        <span id="para_name" class="masterTooltip" title="An agent’s opinion is updated to become a little more similar, on average, to those reflected in posts from concordant neighbors. The learning rate controls the strength of this influence.">Learning Rate:</span><input id="learning" type="range" min="0" max = "1" value="0.8" step="0.01" onchange="showValue(this.value, 'lrange')" /><span id="lrange">0.80</span><br />
+        <span id="para_name" class="masterTooltip" title="This parameter regulates how often an agent shares a new post reflecting their own opinion, rather than reposting a concordant neighbor’s message reflecting the neighbor’s opinion.">New Post Rate:</span><input id="post" type="range" min="0" max = "1" value="0.8" step="0.01" onchange="showValue(this.value, 'prange')" /><span id="prange">0.80</span><br />
+      </div>
     </div>
-
 <!--     <div id="counters">
       <span id="counter_text">Iterated: </span><span id="iterate">0</span><br />
       <span id="counter_text">AgentId: </span><span id="agent">NaN</span><br />
@@ -71,11 +78,10 @@ $('.masterTooltip').hover(function(){
       </ul>
     </div>
 
-    <div id="controls">
-      <span id="para_name" class="masterTooltip" title="Opinions within this range from an agent’s own opinion are considered as concordant, otherwise as discordant. Neighbors who post concordant opinions can influence an agent’s own opinion. Furthermore, an agent will occasionally unfriend neighbors who post discordant opinions.">Concordant Opinion Range:</span><input id="confidence" type="range" min="0" max = "2" value="0.4" step="0.01" onchange="showValue(this.value, 'crange')" /><span id="crange">0.40</span><br />
-      <span id="para_name" class="masterTooltip" title="An agent’s opinion is updated to become a little more similar, on average, to those reflected in posts from concordant neighbors. The learning rate controls the strength of this influence.">Learning Rate:</span><input id="learning" type="range" min="0" max = "1" value="0.8" step="0.01" onchange="showValue(this.value, 'lrange')" /><span id="lrange">0.80</span><br />
-      <span id="para_name" class="masterTooltip" title="This parameter regulates how often an agent shares a new post reflecting their own opinion, rather than reposting a concordant neighbor’s message reflecting the neighbor’s opinion.">New Post Rate:</span><input id="post" type="range" min="0" max = "1" value="0.8" step="0.01" onchange="showValue(this.value, 'prange')" /><span id="prange">0.80</span><br />
-      <span id="para_name" class="masterTooltip" title="This parameter regulates how often an agent will unfriend a neighbor who posts discordant opinions, and replace it with a randomly selected new friend.">Unfriend Rate:</span><input id="rewire" type="range" min="0" max = "1" value="0.9" step="0.01" onchange="showValue(this.value, 'arange')" /><span id="arange">0.90</span><br />
+    <div id="plot">
+      <div id="plot-title"><a href="#" class="masterTooltip" title="This plot tracks how the opinions of an agent’s friends become more or less different from the agent’s own opinion, on average. Decreasing diversity indicates an echo-chamber effect.">?</a>Average Diversity of Friend Opinions</div>
+      <div id="epicurves"></div>
+      <div id="plot-xlable">Time</div>
     </div>
 
     <div id="graph-layout">
@@ -89,11 +95,11 @@ $('.masterTooltip').hover(function(){
     <div id="chat-window">
     </div>
 
-    <!-- <div id="credits"><a href="https://github.com/haoopeng/Social-Media-Echo-Chamber">source code</a> by <a href="http://haoopeng.github.io/">Hao Peng</a>, using <a href="http://mbostock.github.com/d3/">d3.js</a>, <a href="http://jquery.com/">jQuery</a>, <a href="http://www.flotcharts.org/">flot</a>, inspired by <a href="http://bl.ocks.org/ccattuto/raw/5892995/">this</a> and with advice from <a href="http://cnets.indiana.edu/fil/">Filippo Menczer</a></div> -->
-    </div>
-
     <script type="text/javascript" src="main.js"></script>
 
+  </div>
+  <div id="credits">
+    <a href="https://github.com/haoopeng/Social-Media-Echo-Chamber">source code</a> by <a href="http://haoopeng.github.io/">Hao Peng</a>, using <a href="http://mbostock.github.com/d3/">d3.js</a>, <a href="http://jquery.com/">jQuery</a>, <a href="http://www.flotcharts.org/">flot</a>, inspired by <a href="http://bl.ocks.org/ccattuto/raw/5892995/">this</a> and with advice from <a href="http://cnets.indiana.edu/fil/">Filippo Menczer</a>
   </div>
 
 </body>

@@ -360,7 +360,7 @@ function reset_all() {
 
 
   simulation = d3.forceSimulation()
-    .force("link", d3.forceLink().id(function(d) { return d.index; }).distance(5).strength(0.1))
+    .force("link", d3.forceLink().id(function(d) { return d.index; }).distance(5).strength(0.2))
     .force("charge", d3.forceManyBody().strength(-100))
     .force("center", d3.forceCenter(width / 2, height / 2));
     // .force("y", d3.forceY(width))
