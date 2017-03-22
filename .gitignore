@@ -2,6 +2,7 @@
 
 reference/
 __pycache__
+main-org.js
 
 # LaTeX
 *.aux
