@@ -125,13 +125,22 @@ function run_Model() {
     }
   }
   // two ways to post a new opinion.
+  var prev_opinion = t_node.opinion;
   if (concordant_nodes.length > 0) {
     if (Math.random() < post) {
       // post updated opinion from concordant nodes with learning rate;
       t_node.opinion = update_opinion(t_node, concordant_nodes);
+      $("#messages").append(t_node.name + " posted its updated opinion, ");
     } else {
       // randomly repost opinion of one of its concordant nodes;
-      t_node.opinion = concordant_nodes[getRandomInt(0, concordant_nodes.length-1)].opinion;
+      var repost_node = concordant_nodes[getRandomInt(0, concordant_nodes.length-1)]
+      t_node.opinion = repost_node.opinion;
+      $("#messages").append(t_node.name + " reposted " + repost_node.name + "'s opinion, ");
+    }
+    if (t_node.opinion < prev_opinion) {
+      $("#messages").append(t_node.name + " is more conservative now.<br/>");
+    } else {
+      $("#messages").append(t_node.name + " is more liberal now.<br/>");
     }
   }
   // rewire one discordant link to other nodes;
@@ -158,9 +167,12 @@ function run_Model() {
       del_node.k--;
       t_link.target = add_node;
       add_node.k++;
+      $("#messages").append(t_node.name + " unfollowed " + del_node.name + " and followed " + add_node.name + ". <br/>");
     }
   }
   // highlight the newly established link
+  $("#messages").append("<br/>");
+  getMessages();
   update_network(t_node, t_link);
   count += 1;
   avg_deviation = cal_avg_deviation();
@@ -168,6 +180,16 @@ function run_Model() {
   update_plot();
   // console.log(count);
   $("#iterate").html(count);
+}
+
+function getMessages() {
+  // Prior to getting your messages.
+  var messages = document.getElementById('messages');
+  var shouldScroll = messages.scrollTop + messages.clientHeight === messages.scrollHeight;
+  // After getting your messages.
+  if (!shouldScroll) {
+    messages.scrollTop = messages.scrollHeight;
+  }
 }
 
 function update_opinion(t_node, concordant_nodes) {
@@ -352,6 +374,8 @@ function reset_all() {
   stop_all();
   count = 0;
   timeseries.data = [];
+  $("#messages").html("");
+  getMessages();
   // $("#iterate").html(count);
   // $("#agent").html("NaN");
   // $("#opinion").html("NaN");

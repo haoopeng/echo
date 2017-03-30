@@ -55,12 +55,12 @@ $('.masterTooltip').hover(function(){
   <div id="container">
 
     <div id="controls">
-      <span id="para_name" class="masterTooltip" title="Opinions within this range from an agent’s own opinion are considered as concordant opinions, otherwise as discordant ones. Neighbors who post concordant opinions can influence an agent’s own opinion. Furthermore, an agent will occasionally unfriend neighbors who post discordant opinions.">Concordant Opinion Range:</span><input id="confidence" type="range" min="0" max = "2" value="0.4" step="0.01" onchange="showValue(this.value, 'crange')" /><span id="crange">0.40</span><br />
-      <span id="para_name" class="masterTooltip" title="This parameter regulates how often an agent will unfriend a neighbor who posts discordant opinions, and replace it with a randomly selected new friend.">Unfriend Rate:</span><input id="rewire" type="range" min="0" max = "1" value="0.9" step="0.01" onchange="showValue(this.value, 'arange')" /><span id="arange">0.90</span><br />
+      <span id="para_name"><a href="#" class="masterTooltip" title="Opinions within this range from an agent’s own opinion are considered as concordant opinions, otherwise as discordant ones. Neighbors who post concordant opinions can influence an agent’s own opinion. Furthermore, an agent will occasionally unfriend neighbors who post discordant opinions.">?</a>Concordant Opinion Range:</span><input id="confidence" type="range" min="0" max = "2" value="0.4" step="0.01" onchange="showValue(this.value, 'crange')" /><span id="crange">0.40</span><br />
+      <span id="para_name"><a href="#" class="masterTooltip" title="This parameter regulates how often an agent will unfriend a neighbor who posts discordant opinions, and replace it with a randomly selected new friend.">?</a>Unfriend Rate:</span><input id="rewire" type="range" min="0" max = "1" value="0.9" step="0.01" onchange="showValue(this.value, 'arange')" /><span id="arange">0.90</span><br />
       <div id="controls-advanced">
         <span id="para_name">Advanced Features</span><br />
-        <span id="para_name" class="masterTooltip" title="An agent’s opinion is updated to become a little more similar, on average, to those reflected in posts from concordant neighbors. The learning rate controls the strength of this influence.">Learning Rate:</span><input id="learning" type="range" min="0" max = "1" value="0.8" step="0.01" onchange="showValue(this.value, 'lrange')" /><span id="lrange">0.80</span><br />
-        <span id="para_name" class="masterTooltip" title="This parameter regulates how often an agent shares a new post reflecting their own opinion, rather than reposting a concordant neighbor’s message reflecting the neighbor’s opinion.">New Post Rate:</span><input id="post" type="range" min="0" max = "1" value="0.8" step="0.01" onchange="showValue(this.value, 'prange')" /><span id="prange">0.80</span><br />
+        <span id="para_name"><a href="#" class="masterTooltip" title="An agent’s opinion is updated to become a little more similar, on average, to those reflected in posts from concordant neighbors. The learning rate controls the strength of this influence.">?</a>Learning Rate:</span><input id="learning" type="range" min="0" max = "1" value="0.8" step="0.01" onchange="showValue(this.value, 'lrange')" /><span id="lrange">0.80</span><br />
+        <span id="para_name"><a href="#" class="masterTooltip" title="This parameter regulates how often an agent shares a new post reflecting their own opinion, rather than reposting a concordant neighbor’s message reflecting the neighbor’s opinion.">?</a>New Post Rate:</span><input id="post" type="range" min="0" max = "1" value="0.8" step="0.01" onchange="showValue(this.value, 'prange')" /><span id="prange">0.80</span><br />
       </div>
     </div>
 <!--     <div id="counters">
@@ -92,7 +92,7 @@ $('.masterTooltip').hover(function(){
       <span id="speed-box">Speed:<br /><input id="speed" type="range" min="0" max = "199" value="100" step="1" /></span>
     </div>
 
-    <div id="chat-window">
+    <div id="messages">
     </div>
 
     <script type="text/javascript" src="main.js"></script>
