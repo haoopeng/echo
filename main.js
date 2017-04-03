@@ -10,7 +10,7 @@ var valid_data = 0;
 var slowest_time = 200;
 var remove_link = false;
 var time_interval = slowest_time - Number($("#speed").val()),
-    confidence = Number($("#confidence").val()),
+    tolerance = Number($("#tolerance").val()),
     learning = Number($("#learning").val()),
     rewire = Number($("#rewire").val()),
     post = Number($("#post").val());
@@ -19,8 +19,8 @@ var nodes, links, adj_list, simulation, svgLinks, svgNodes;
 var n = 100, // number of nodes
     m = 400; // number of links
 
-var timeseries = {color: "#000", data: []};
 var avg_deviation;
+var timeseries = {color: "#000", data: []};
 
 var plotOptions = {
     xaxis: {min: 0},
@@ -71,15 +71,17 @@ var svg = d3.select("#graph-layout").append("svg")
 //     .attr("y", -3);
 
 $("#speed").on("change", update_para);
-$("#confidence").on("change", update_para);
+$("#tolerance").on("change", update_para);
 $("#learning").on("change", update_para);
 $("#post").on("change", update_para);
 $("#rewire").on("change", update_para);
 
 reset_all();
+
 $("#start-button").click(start_all);
 $("#stop-button").click(stop_all);
 $("#reset-button").click(reset_all);
+$("#default-button").click(default_para);
 
 var interval = setInterval(run_Model, time_interval);
 
@@ -109,7 +111,7 @@ function run_Model() {
       i = j, j = temp, links[l].source = i, links[l].target = j;
     }
     if (i.name == t_node.name) {
-      if (Math.abs(i.opinion - j.opinion) <= confidence) {
+      if (Math.abs(i.opinion - j.msg_opinion) <= tolerance) {
         concordant_nodes.push(j);
       } else {
         discordant_nodes.push(j);
@@ -124,23 +126,38 @@ function run_Model() {
       other_nodes.push(n_t);
     }
   }
-  // two ways to post a new opinion.
   var prev_opinion = t_node.opinion;
+  var chat_msg_one = chat_msg_two = chat_msg_three = "";
   if (concordant_nodes.length > 0) {
+    // always learn its opinion from concordant messages.
+    t_node.opinion = update_opinion(t_node, concordant_nodes);
+    // two ways to post a new opinion.
     if (Math.random() < post) {
-      // post updated opinion from concordant nodes with learning rate;
-      t_node.opinion = update_opinion(t_node, concordant_nodes);
-      $("#messages").append(t_node.name + " posted its updated opinion, ");
+      // post a msg reflecting its updated opinion;
+      t_node.msg_opinion = t_node.opinion;
+      chat_msg_three = t_node.name + " posts a new message.<br/>";
     } else {
-      // randomly repost opinion of one of its concordant nodes;
+      // randomly repost msg from one of its discordant messages;
       var repost_node = concordant_nodes[getRandomInt(0, concordant_nodes.length-1)]
-      t_node.opinion = repost_node.opinion;
-      $("#messages").append(t_node.name + " reposted " + repost_node.name + "'s opinion, ");
+      t_node.msg_opinion = repost_node.msg_opinion;
+      chat_msg_three = t_node.name + " reposts " + repost_node.name + "'s message.<br/>";
     }
-    if (t_node.opinion < prev_opinion) {
-      $("#messages").append(t_node.name + " is more conservative now.<br/>");
-    } else {
-      $("#messages").append(t_node.name + " is more liberal now.<br/>");
+    if (learning > 0) {
+      chat_msg_one = t_node.name + " reads " + concordant_nodes.length + " messages, ";
+      if (prev_opinion <= 0) {
+        if (t_node.opinion < prev_opinion) {
+          chat_msg_one += "it's a bit more progressive now.<br/>";
+        } else {
+          chat_msg_one += "it's a bit less progressive now.<br/>";
+        }
+      }
+      if (prev_opinion > 0) {
+        if (t_node.opinion < prev_opinion) {
+          chat_msg_one += "it's a bit less conservative now.<br/>";
+        } else {
+          chat_msg_one += "it's a bit more conservative now.<br/>";
+        }
+      }
     }
   }
   // rewire one discordant link to other nodes;
@@ -148,7 +165,7 @@ function run_Model() {
   if (discordant_nodes.length > 0) {
     if (Math.random() < rewire) {
       t_link = discordant_links[getRandomInt(0, discordant_links.length-1)];
-      // add the link that will be removed soon to links.
+      // add the link that will be removed from links.
       // links.push(jQuery.extend(true, {}, t_link));
       links.push(JSON.parse(JSON.stringify(t_link)));
       remove_link = true;
@@ -167,35 +184,34 @@ function run_Model() {
       del_node.k--;
       t_link.target = add_node;
       add_node.k++;
-      $("#messages").append(t_node.name + " unfollowed " + del_node.name + " and followed " + add_node.name + ". <br/>");
+      chat_msg_two = t_node.name + " unfollows " + del_node.name + ", follows " + add_node.name + ".<br/>";
     }
   }
+  $("#chatting").append(chat_msg_one + chat_msg_two + chat_msg_three + "<br/>");
+  showChatting();
   // highlight the newly established link
-  $("#messages").append("<br/>");
-  getMessages();
   update_network(t_node, t_link);
   count += 1;
   avg_deviation = cal_avg_deviation();
   timeseries.data.push([count, avg_deviation]);
+  update_strength();
   update_plot();
-  // console.log(count);
-  $("#iterate").html(count);
 }
 
-function getMessages() {
-  // Prior to getting your messages.
-  var messages = document.getElementById('messages');
-  var shouldScroll = messages.scrollTop + messages.clientHeight === messages.scrollHeight;
-  // After getting your messages.
+function showChatting() {
+  // Prior to getting your chatting.
+  var chatting = document.getElementById('chatting');
+  var shouldScroll = chatting.scrollTop + chatting.clientHeight === chatting.scrollHeight;
+  // After getting your chatting.
   if (!shouldScroll) {
-    messages.scrollTop = messages.scrollHeight;
+    chatting.scrollTop = chatting.scrollHeight;
   }
 }
 
 function update_opinion(t_node, concordant_nodes) {
   var sum = 0;
   for (k in concordant_nodes) {
-    sum += concordant_nodes[k].opinion;
+    sum += concordant_nodes[k].msg_opinion;
   }
   var opinion_f = (1-learning) * t_node.opinion + learning * sum / concordant_nodes.length;
   return opinion_f;
@@ -283,15 +299,15 @@ function dragended(d) {
 //   p = Number($(this).val());
 //   name = $(this).attr("id");
 //   var max = 1.0;
-//   if (name == "confidence") {
+//   if (name == "tolerance") {
 //     max = 2.0;
 //   }
 //   if (isNaN(p) || p<0.0 || p>max) {
 //     valid_data = 0;
 //     $(this).css("background-color", "#f88");
 //   } else {
-//     if (name == "confidence") {
-//       confidence = p;
+//     if (name == "tolerance") {
+//       tolerance = p;
 //     } else if (name == "learning") {
 //       learning = p;
 //     } else if (name == "post") {
@@ -307,8 +323,8 @@ function dragended(d) {
 function update_para() {
   p = Number($(this).val());
   name = $(this).attr("id");
-  if (name == "confidence") {
-    confidence = p;
+  if (name == "tolerance") {
+    tolerance = p;
   } else if (name == "learning") {
     learning = p;
   } else if (name == "post") {
@@ -354,9 +370,19 @@ function ticked() {
     .attr("y2", function(d) { return d.target.y; });
 }
 
-
-function constrain(d, bound) {
-
+function default_para() {
+  $("#tolerance").val(0.4);
+  showValue(0.4, "trange");
+  tolerance = 0.4;
+  $("#learning").val(0.8);
+  showValue(0.8, "lrange");
+  learning = 0.8;
+  $("#post").val(0.8);
+  showValue(0.8, "prange");
+  post = 0.8;
+  $("#rewire").val(0.9);
+  showValue(0.9, "arange");
+  rewire = 0.9;
 }
 
 function start_all() {
@@ -374,18 +400,16 @@ function reset_all() {
   stop_all();
   count = 0;
   timeseries.data = [];
-  $("#messages").html("");
-  getMessages();
-  // $("#iterate").html(count);
-  // $("#agent").html("NaN");
-  // $("#opinion").html("NaN");
+  $("#chatting").html("");
+  showChatting();
+  default_para();
   //creates a random graph on n nodes and m links
   [nodes, links, adj_list] = createRandomNet(n, m);
 
 
   simulation = d3.forceSimulation()
-    .force("link", d3.forceLink().id(function(d) { return d.index; }).distance(5).strength(0.2))
-    .force("charge", d3.forceManyBody().strength(-100))
+    .force("link", d3.forceLink().id(function(d) { return d.index; }).distance(10).strength(0.1))
+    .force("charge", d3.forceManyBody().strength(-73))
     .force("center", d3.forceCenter(width / 2, height / 2));
     // .force("y", d3.forceY(width))
     // .force("x", d3.forceX(height));
@@ -401,6 +425,10 @@ function reset_all() {
   update_plot();
 }
 
+function update_strength() {
+    simulation.force("charge", d3.forceManyBody().strength(-1-avg_deviation*90));
+}
+
 function createRandomNet(n, m) {
   var nodes = d3.range(n).map(function (i) {return {name: i}; }),
       list  = randomChoose(unorderedPairs(d3.range(n)), m),
@@ -408,7 +436,9 @@ function createRandomNet(n, m) {
   var adj_list = [];
   for (n in nodes) {
     nodes[n].k = 0;
-    nodes[n].opinion = genRandomValue(-1, 1);
+    var num = genRandomValue(-1, 1);
+    nodes[n].opinion = num;
+    nodes[n].msg_opinion = num;
     adj_list[n] = [];
   }
   for (l in links) {

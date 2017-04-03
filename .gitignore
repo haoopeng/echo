@@ -3,6 +3,7 @@
 reference/
 __pycache__
 main-org.js
+push.sh
 
 # LaTeX
 *.aux
@@ -28,7 +29,6 @@ supp.pdf
 # figures
 *.pdf
 *.ai
-*.png
 
 # Office files
 *.docx

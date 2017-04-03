@@ -2,7 +2,7 @@ body {
   font-family: Sans-Serif;
 }
 
-div#title{
+div#title {
   /*height: 30px;*/
   width: 1040px;
   font-size: 25px;
@@ -12,12 +12,27 @@ div#title{
 
 span#subtitle {
   font-size: 20px;
-  text-align: center;
-  color: #666;
+  left: 50px;
+}
+
+div#share-buttons {
+  width: 80px;
+  float: right;
+  position: absolute;
+  left: 966px;
+  top: 42px;
+}
+
+#share-buttons img {
+  width: 20px;
+  padding: 2px;
+  border: 0;
+  box-shadow: 0;
+  display: inline;
 }
 
 div#container {
-  width: 1045px;
+  width: 1020px;
   height: 660px;
   border: 1px solid #eee;
   margin: 10px;
@@ -25,35 +40,39 @@ div#container {
 
 div#controls {
   float: left;
-  height: 200px;
+  height: 140px;
+  width: 260px;
   margin: 20px;
+  margin-top: 40px;
   margin-bottom: 0px;
-  font-size: 35px;
+  font-size: 25px;
   text-align: right;
+  padding: 20px;
+  padding-top: 0px;
+  border: 1px solid #ccc;
 }
 
-div#controls-advanced {
+/*div#controls-advanced {
   font-size: 23px;
   height: 90px;
   margin-top: 10px;
   padding-right: 40px;
   border: 1px solid #ccc;
-}
+}*/
 
-span#crange, #prange, #arange, #lrange, #srange {
+span#trange, #prange, #arange, #lrange {
   width: 50px;
   padding: 2px;
   font-size: 15px;
   border: 1px solid #aaa;
 }
 
-input#confidence, #learning, #post, #rewire {
+input#tolerance, #learning, #post, #rewire {
   height: 9px;
   width: 100px;
 }
 
 span#para_name {
-  color: #000000;
   font-size: 15px;
 }
 
@@ -90,7 +109,7 @@ span#right {
 
 div#plot {
   float: left;
-  width: 320px;
+  width: 325px;
   height: 200px;
   background: #fff;
   margin: 20px;
@@ -128,7 +147,7 @@ div#plot-xlable {
 div#graph-layout {
   float: left;
   height: 400px;
-  width: 665px;
+  width: 630px;
   margin: 20px;
   background: #fafafa;
   border: 1px solid #eee;
@@ -136,17 +155,17 @@ div#graph-layout {
   position: relative;
 }
 
-div#messages {
+div#chatting {
   float: right;
   height: 400px;
-  width: 315px;
+  width: 320px;
   margin: 20px;
   margin-left: 0px;
   background: #fafafa;
   border: 1px solid #eee;
   position: relative;
   overflow: auto;
-  font-size: 11px;
+  font-size: 12px;
 }
 
 
@@ -183,33 +202,41 @@ line.link {
 
 button {
   float: left;
-  font-size: 25px;
+  font-size: 23px;
 }
 
 button#reset-button {
+  height: 32px;
   color: #666;
 }
 
 button#start-button {
+  height: 32px;
   color: #008000;
 }
 
 button#stop-button {
+  height: 32px;
   color: #FF0000;
+}
+
+button#default-button {
+  margin-top: 8px;
+  font-size: 12px;
 }
 
 span#speed-box {
   float: left;
+  height: 30px;
   text-align: center;
-  font-size: 14px;
-  width: 120px;
-  height: 32px;
+  font-size: 12px;
+  width: 100px;
   border: 1px solid #aaa;
 }
 
 input#speed {
   float: center;
-  width: 100px;
+  width: 80px;
 }
 
 a {
@@ -218,17 +245,22 @@ a {
   color: #00c6ff;
 }
 
+a#copy {
+  text-decoration: none;
+  font-size: 14px;
+  color: #990000;
+}
 .tooltip {
-  display:block;
-  position:absolute;
+  display: block;
+  position: absolute;
   max-width: 255px;
-  border:1px solid #333;
-  background-color:#161616;
-  border-radius:5px;
-  padding:10px;
-  color:#fff;
-  font-size:14px;
-  text-align: justify;
+  border: 1px solid #333;
+  background-color: #161616;
+  border-radius: 5px;
+  padding: 10px;
+  color: #fff;
+  font-size: 25px;
+  /*text-align: justify;*/
   -webkit-hyphens: auto;
   -moz-hyphens: auto;
   -ms-hyphens: auto;
@@ -236,8 +268,8 @@ a {
 }
 
 div#credits {
-  width: 1042px;
-  text-align: right;
+  width: 1022px;
+  text-align: left;
   font-size: 14px;
   padding: 10px;
 }
