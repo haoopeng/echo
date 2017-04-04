@@ -146,16 +146,16 @@ function run_Model() {
       chat_msg_one = t_node.name + " reads " + concordant_nodes.length + " messages, ";
       if (prev_opinion <= 0) {
         if (t_node.opinion < prev_opinion) {
-          chat_msg_one += "it's a bit more progressive now.<br/>";
+          chat_msg_one += "becomes a bit more progressive.<br/>";
         } else {
-          chat_msg_one += "it's a bit less progressive now.<br/>";
+          chat_msg_one += "becomes a bit less progressive.<br/>";
         }
       }
       if (prev_opinion > 0) {
         if (t_node.opinion < prev_opinion) {
-          chat_msg_one += "it's a bit less conservative now.<br/>";
+          chat_msg_one += "becomes a bit less conservative.<br/>";
         } else {
-          chat_msg_one += "it's a bit more conservative now.<br/>";
+          chat_msg_one += "becomes a bit more conservative.<br/>";
         }
       }
     }
@@ -402,7 +402,6 @@ function reset_all() {
   timeseries.data = [];
   $("#chatting").html("");
   showChatting();
-  default_para();
   //creates a random graph on n nodes and m links
   [nodes, links, adj_list] = createRandomNet(n, m);
 

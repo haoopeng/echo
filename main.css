@@ -2,9 +2,14 @@ body {
   font-family: Sans-Serif;
 }
 
+div#center {
+  width: 1042px;
+  margin: auto;
+  position: relative;
+}
+
 div#title {
-  /*height: 30px;*/
-  width: 1040px;
+  width: 1042px;
   font-size: 25px;
   text-align: center;
   color: #666;
@@ -12,15 +17,15 @@ div#title {
 
 span#subtitle {
   font-size: 20px;
-  left: 50px;
 }
 
 div#share-buttons {
-  width: 80px;
+  width: 100px;
   float: right;
   position: absolute;
-  left: 966px;
-  top: 42px;
+  left: 960px;
+  top: 35px;
+  z-index: 10;
 }
 
 #share-buttons img {
