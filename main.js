@@ -135,27 +135,27 @@ function run_Model() {
     if (Math.random() < post) {
       // post a msg reflecting its updated opinion;
       t_node.msg_opinion = t_node.opinion;
-      chat_msg_three = t_node.name + " posts a new message.<br/>";
+      chat_msg_three = "User " + t_node.name + " posts a new message.<br/>";
     } else {
       // randomly repost msg from one of its discordant messages;
       var repost_node = concordant_nodes[getRandomInt(0, concordant_nodes.length-1)]
       t_node.msg_opinion = repost_node.msg_opinion;
-      chat_msg_three = t_node.name + " reposts " + repost_node.name + "'s message.<br/>";
+      chat_msg_three = "User " + t_node.name + " reposts " + "user " + repost_node.name + "'s message.<br/>";
     }
     if (learning > 0) {
-      chat_msg_one = t_node.name + " reads " + concordant_nodes.length + " messages, ";
+      chat_msg_one = "User " + t_node.name + " reads " + concordant_nodes.length + " messages.<br/>";
       if (prev_opinion <= 0) {
         if (t_node.opinion < prev_opinion) {
-          chat_msg_one += "becomes a bit more progressive.<br/>";
+          chat_msg_one += "User " + t_node.name + " becomes a bit more progressive.<br/>";
         } else {
-          chat_msg_one += "becomes a bit less progressive.<br/>";
+          chat_msg_one += "User " + t_node.name + " becomes a bit less progressive.<br/>";
         }
       }
       if (prev_opinion > 0) {
         if (t_node.opinion < prev_opinion) {
-          chat_msg_one += "becomes a bit less conservative.<br/>";
+          chat_msg_one += "User " + t_node.name + " becomes a bit less conservative.<br/>";
         } else {
-          chat_msg_one += "becomes a bit more conservative.<br/>";
+          chat_msg_one += "User " + t_node.name + " becomes a bit more conservative.<br/>";
         }
       }
     }
@@ -184,7 +184,7 @@ function run_Model() {
       del_node.k--;
       t_link.target = add_node;
       add_node.k++;
-      chat_msg_two = t_node.name + " unfollows " + del_node.name + ", follows " + add_node.name + ".<br/>";
+      chat_msg_two = "User " + t_node.name + " unfollows " + "user " + del_node.name + ", follows " + "user " + add_node.name + ".<br/>";
     }
   }
   $("#chatting").append(chat_msg_one + chat_msg_two + chat_msg_three + "<br/>");

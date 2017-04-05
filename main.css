@@ -264,12 +264,12 @@ a#copy {
   border-radius: 5px;
   padding: 10px;
   color: #fff;
-  font-size: 25px;
-  /*text-align: justify;*/
+  font-size: 12px;
+  /*text-align: justify;
   -webkit-hyphens: auto;
   -moz-hyphens: auto;
   -ms-hyphens: auto;
-  hyphens: auto;
+  hyphens: auto;*/
 }
 
 div#credits {
