@@ -159,6 +159,9 @@ function run_Model() {
         }
       }
     }
+  } else { //no concordant nodes, just post a new message.
+      t_node.msg_opinion = t_node.opinion;
+      chat_msg_three = "User " + t_node.name + " posts a new message.<br/>";
   }
   // rewire one discordant link to other nodes;
   var t_link = false;
