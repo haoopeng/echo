@@ -237,8 +237,14 @@ function cal_avg_deviation() {
   return total/len;
 }
 
-function update_network(t_node = false, t_link = false) {
-
+function update_network(t_node, t_link) {
+  // safari doesn't allow assigning parameter default value.
+  if (t_node === undefined) {
+    t_node = false;
+  }
+  if (t_link === undefined) {
+    t_link = false;
+  }
   svg.selectAll("line.link, circle.node").remove();
   //SVG doesn't have a convenient equivalent to html's `z-index`; instead, it relied on the order of the elements in the markup. Below, we add the nodes after the links to ensure that nodes apprear on top of links.
 

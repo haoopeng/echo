@@ -1,17 +1,14 @@
 <!DOCTYPE html>
 <meta charset="utf-8"/>
-<!-- <meta name="viewport" content="width=device-width"/> -->
 <html>
 
 <head>
-<link type="text/css" rel="stylesheet" href="main.css"/>
-<!-- <link type="text/css" rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css"/> -->
 <link type="text/css" rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-<script type="text/javascript" src="jquery-1.7.1.min.js"></script>
-<script type="text/javascript" src="jquery.flot.min.js"></script>
-<script src="d3.v4.min.js" charset="utf-8"></script>
-<script src="d3-scale-chromatic.v1.min.js"></script>
-<script src="d3-tip.min.js"></script>
+<link type="text/css" rel="stylesheet" href="main.css"/>
+<script type="text/javascript" src="jquery-1.7.1.min.js" charset="utf-8"></script>
+<script type="text/javascript" src="jquery.flot.min.js" charset="utf-8"></script>
+<script type="text/javascript" src="d3.v4.min.js" charset="utf-8"></script>
+<script type="text/javascript" src="d3-scale-chromatic.v1.min.js" charset="utf-8"></script>
 
 <script type="text/javascript">
 function showValue(newValue, span)
@@ -51,13 +48,14 @@ $("i.fa.fa-question-circle-o").hover(function(){
 });
 </script>
 
+<meta property="og:title" content="EchoDemo" />
+<meta property="og:description" content="How echo chambers emerge from social media" />
+<meta property="og:url" content="http://bl.ocks.org/haoopeng/raw/055662c96ec770be1930574cfe1553f2/" />
+<meta property="og:image" content="http://bl.ocks.org/haoopeng/raw/055662c96ec770be1930574cfe1553f2/EchoDemo.jpg" />
+<meta property="og:type" content="website" />
+<link href="favicon.ico" rel="shortcut icon" type="image/x-icon"/>
+
 <title>Social Media Echo Chamber</title>
-  <meta property="og:title" content="EchoDemo" />
-  <meta property="og:description" content="How echo chambers emerge from social media sharing" />
-  <meta property="og:url" content="http://bl.ocks.org/haoopeng/raw/055662c96ec770be1930574cfe1553f2/" />
-  <meta property="og:image" content="http://bl.ocks.org/haoopeng/raw/055662c96ec770be1930574cfe1553f2/EchoDemo.jpg" />
-  <meta property="og:type" content="website" />
-  <link href="favicon.ico" rel="shortcut icon" type="image/x-icon"/>
 
 </head>
 
@@ -66,7 +64,7 @@ $("i.fa.fa-question-circle-o").hover(function(){
 
   <div id="title">
     <span>EchoDemo</span><br/>
-    <span id="subtitle">How echo chambers emerge from social media sharing</span>
+    <span id="subtitle">How echo chambers emerge from social media</span>
   </div>
   <div id="share-buttons">
     <a href="https://twitter.com/share?url=http://bl.ocks.org/haoopeng/raw/055662c96ec770be1930574cfe1553f2/&amp;text=Echo%20Chamber%20Demo&amp;hashtags=SocialMediaEchoChamber" target="_blank"><img src="https://simplesharebuttons.com/images/somacro/twitter.png" alt="Twitter" /></a>
@@ -77,11 +75,11 @@ $("i.fa.fa-question-circle-o").hover(function(){
 
     <div id="controls">
       <button id="default-button">Default</button>
-      <span id="para_name">Advanced Parameters</span><br />
-      <span id="para_name"><i class="fa fa-question-circle-o" aria-hidden="true" title="Messages reflecting opinions within this range from an agent’s own opinion are considered as concordant, otherwise as discordant. Concordant messages can influence an agent’s own opinion. Furthermore, an agent will occasionally unfriend neighbors who post discordant messages."></i> Tolerance:</span><input id="tolerance" type="range" min="0" max = "1" value="0.4" step="0.1" onchange="showValue(this.value, 'trange')" /><span id="trange">0.4</span><br />
-      <span id="para_name"><i class="fa fa-question-circle-o" aria-hidden="true" title="An agent’s opinion is updated to become a little more similar, on average, to those reflected in concordant messages from neighbors. The learning rate controls the strength of this influence."></i> Learning Rate:</span><input id="learning" type="range" min="0" max = "1" value="0.8" step="0.1" onchange="showValue(this.value, 'lrange')" /><span id="lrange">0.8</span><br />
-      <span id="para_name"><i class="fa fa-question-circle-o" aria-hidden="true" title="This parameter regulates how often an agent shares a new message reflecting their own opinion, rather than reposting a concordant message from a neighbor."></i> Post Rate:</span><input id="post" type="range" min="0" max = "1" value="0.8" step="0.1" onchange="showValue(this.value, 'prange')" /><span id="prange">0.8</span><br />
-      <span id="para_name"><i class="fa fa-question-circle-o" aria-hidden="true" title="This parameter regulates how often an agent will unfriend a neighbor who posts a discordant message, and replace it with a randomly selected new friend."></i> Unfriend Rate:</span><input id="rewire" type="range" min="0" max = "1" value="0.9" step="0.1" onchange="showValue(this.value, 'arange')" /><span id="arange">0.9</span><br />
+      <span style="font-size:15px">Advanced Parameters</span><br/><br/>
+      <div id="para_line"><i class="fa fa-question-circle-o" aria-hidden="true" title="Messages reflecting opinions within this range from an agent’s own opinion are considered as concordant, otherwise as discordant. Concordant messages can influence an agent’s own opinion. Furthermore, an agent will occasionally unfriend neighbors who post discordant messages."></i> Tolerance: <input id="tolerance" type="range" min="0" max = "1" value="0.4" step="0.1" onchange="showValue(this.value, 'trange')" /><span id="trange">0.4</span></div>
+      <div id="para_line"><i class="fa fa-question-circle-o" aria-hidden="true" title="An agent’s opinion is updated to become a little more similar, on average, to those reflected in concordant messages from neighbors. The learning rate controls the strength of this influence."></i> Social Influence: <input id="learning" type="range" min="0" max = "1" value="0.8" step="0.1" onchange="showValue(this.value, 'lrange')" /><span id="lrange">0.8</span></div>
+      <div id="para_line"><i class="fa fa-question-circle-o" aria-hidden="true" title="This parameter regulates how often an agent shares a new message reflecting their own opinion, rather than reposting a concordant message from a neighbor."></i> Post Rate: <input id="post" type="range" min="0" max = "1" value="0.8" step="0.1" onchange="showValue(this.value, 'prange')" /><span id="prange">0.8</span></div>
+      <div id="para_line"><i class="fa fa-question-circle-o" aria-hidden="true" title="This parameter regulates how often an agent will unfriend a neighbor who posts a discordant message, and replace it with a randomly selected new friend."></i> Unfriend Rate: <input id="rewire" type="range" min="0" max = "1" value="0.9" step="0.1" onchange="showValue(this.value, 'arange')" /><span id="arange">0.9</span></div>
     </div>
 
     <div id="legend">
@@ -115,7 +113,7 @@ $("i.fa.fa-question-circle-o").hover(function(){
 
   </div>
   <div id="credits">
-    <img src="//assets.iu.edu/brand/1.x/block-iu.png" height="18" width="16" alt="IUB" align="left">&nbsp; <a id="copy" href="https://www.iu.edu/copyright/index.html">Copyright &copy; 2017</a><span id="right"><a href="https://github.com/haoopeng/Social-Media-Echo-Chamber">Source code</a> by <a href="http://haoopeng.github.io/">Hao Peng</a><!--, using <a href="http://mbostock.github.com/d3/">d3.js</a>, <a href="http://jquery.com/">jQuery</a>, <a href="http://www.flotcharts.org/">flot</a> -->, inspired by <a href="http://bl.ocks.org/ccattuto/raw/5892995/">this</a> and <a href="https://github.com/yy/dviz-course">D3 course</a>, with advice from <a href="http://cnets.indiana.edu/fil/">Filippo Menczer</a> and <a href="http://www.colorlessgreen.info/">Kazutoshi Sasahara</a></span>
+    <img src="//assets.iu.edu/brand/1.x/block-iu.png" height="18" width="16" alt="IUB" align="left">&nbsp; <a id="copy" href="https://www.iu.edu/copyright/index.html">Copyright &copy; 2017</a><span id="right"><a href="https://github.com/haoopeng/Social-Media-Echo-Chamber">Source code</a> by <a href="http://haoopeng.github.io/">Hao Peng</a>, inspired by <a href="http://bl.ocks.org/ccattuto/raw/5892995/">this</a> and <a href="https://github.com/yy/dviz-course">D3 course</a>, with advice from <a href="http://cnets.indiana.edu/fil/">Filippo Menczer</a> and <a href="http://www.colorlessgreen.info/">Kazutoshi Sasahara</a></span>
   </div>
 
 </div>

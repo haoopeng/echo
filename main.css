@@ -50,10 +50,10 @@ div#controls {
   margin: 20px;
   margin-top: 40px;
   margin-bottom: 0px;
-  font-size: 25px;
   text-align: right;
   padding: 20px;
-  padding-top: 0px;
+  padding-top: 10px;
+  padding-bottom: 10px;
   border: 1px solid #ccc;
 }
 
@@ -65,20 +65,21 @@ div#controls {
   border: 1px solid #ccc;
 }*/
 
+div#para_line {
+  font-size: 15px;
+  margin-bottom: 10px;
+}
+
 span#trange, #prange, #arange, #lrange {
   width: 50px;
-  padding: 2px;
-  font-size: 15px;
+  padding-left: 2px;
+  padding-right: 2px;
   border: 1px solid #aaa;
 }
 
 input#tolerance, #learning, #post, #rewire {
   height: 9px;
-  width: 100px;
-}
-
-span#para_name {
-  font-size: 15px;
+  width: 90px;
 }
 
 div#legend {
@@ -226,7 +227,7 @@ button#stop-button {
 }
 
 button#default-button {
-  margin-top: 8px;
+  margin-top: 0px;
   font-size: 12px;
 }
 
