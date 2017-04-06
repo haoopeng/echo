@@ -247,13 +247,13 @@ input#speed {
 
 a {
   text-decoration: none;
-  font-size: 14px;
+  /*font-size: 14px;*/
   color: #00c6ff;
 }
 
 a#copy {
   text-decoration: none;
-  font-size: 14px;
+  /*font-size: 14px;*/
   color: #990000;
 }
 .tooltip {
@@ -274,8 +274,7 @@ a#copy {
 }
 
 div#credits {
-  width: 1022px;
   text-align: left;
-  font-size: 14px;
+  font-size: 12px;
   padding: 10px;
 }
