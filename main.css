@@ -278,3 +278,15 @@ div#credits {
   font-size: 12px;
   padding: 10px;
 }
+
+select#soflow-t, #soflow-i, #soflow-u {
+  background-position: 97% center;
+  background-repeat: no-repeat;
+  border: 1px solid #AAA;
+  color: #555;
+  overflow: hidden;
+  padding: 5px 10px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 80px;
+}

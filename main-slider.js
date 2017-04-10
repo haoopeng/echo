@@ -6,13 +6,14 @@ var colors = d3.scaleSequential(d3.interpolateRdBu).domain([-1, 1]);
 
 var count = 0;
 var running = 0;
+var valid_data = 0;
 var slowest_time = 200;
 var remove_link = false;
 var time_interval = slowest_time - Number($("#speed").val()),
-    post = 0.4;
-
-var tolerance, learning, rewire;
-get_parameters();
+    tolerance = Number($("#tolerance").val()),
+    learning = Number($("#learning").val()),
+    rewire = Number($("#rewire").val()),
+    post = Number($("#post").val());
 var nodes, links, adj_list, simulation, svgLinks, svgNodes;
 
 var n = 100, // number of nodes
@@ -32,10 +33,48 @@ var svg = d3.select("#graph-layout").append("svg")
     .attr("width", width)
     .attr("height", height);
 
-$("#speed").on("change", update_speed);
-$("#soflow-t").on("change", update_para);
-$("#soflow-i").on("change", update_para);
-$("#soflow-u").on("change", update_para);
+// var defs = svg.append("defs");
+// var linearGradient = defs.append("linearGradient")
+//     .attr("id", "linear-gradient")
+//     .attr("x1", "0%")
+//     .attr("y1", "0%")
+//     .attr("x2", "100%")
+//     .attr("y2", "0%");
+
+// linearGradient.append("stop")
+//     .attr("offset", "0%")
+//     .attr("stop-color", "#b82d00");
+
+// linearGradient.append("stop")
+//     .attr("offset", "100%")
+//     .attr("stop-color", "#05335c");
+
+// var g = svg.append("g")
+//     .attr("class", "legendWrapper")
+//     .attr("transform", "translate(10, 20)");
+
+// g.append("rect")
+//   .attr("class", "legendRect")
+//   .attr("width", 200)
+//   .attr("height", 20)
+//   .style("fill", "url(#linear-gradient)");
+
+// g.append("text")
+//     .text("Conservative")
+//     .attr("class", "legend")
+//     .attr("y", -3);
+
+// g.append("text")
+//     .text("Liberal")
+//     .attr("class", "legend")
+//     .attr("x", 155)
+//     .attr("y", -3);
+
+$("#speed").on("change", update_para);
+$("#tolerance").on("change", update_para);
+$("#learning").on("change", update_para);
+$("#post").on("change", update_para);
+$("#rewire").on("change", update_para);
 
 reset_all();
 
@@ -49,7 +88,7 @@ var interval = setInterval(run_Model, time_interval);
 interval;
 
 function run_Model() {
-  if (running == 0) {
+  if (running == 0 || valid_data == 0) {
     return;
   }
   // each time, randomly select a node, identify con/discordant nodes;
@@ -265,6 +304,50 @@ function dragended(d) {
     d.fy = null;
 }
 
+// function update_para() {
+//   p = Number($(this).val());
+//   name = $(this).attr("id");
+//   var max = 1.0;
+//   if (name == "tolerance") {
+//     max = 2.0;
+//   }
+//   if (isNaN(p) || p<0.0 || p>max) {
+//     valid_data = 0;
+//     $(this).css("background-color", "#f88");
+//   } else {
+//     if (name == "tolerance") {
+//       tolerance = p;
+//     } else if (name == "learning") {
+//       learning = p;
+//     } else if (name == "post") {
+//       post = p;
+//     } else {
+//       rewire = p;
+//     }
+//     valid_data = 1;
+//     $(this).css("background-color", "#fff");
+//   }
+// }
+
+function update_para() {
+  p = Number($(this).val());
+  name = $(this).attr("id");
+  if (name == "tolerance") {
+    tolerance = p;
+  } else if (name == "learning") {
+    learning = p;
+  } else if (name == "post") {
+    post = p;
+  } else if (name == "rewire") {
+    rewire = p;
+  } else {
+    clearInterval(interval);
+    time_interval = slowest_time - p;
+    interval = setInterval(run_Model, time_interval);
+  }
+  valid_data = 1;
+}
+
 function ticked() {
     svgNodes
         .attr("cx", function(d) {
@@ -296,42 +379,24 @@ function ticked() {
     .attr("y2", function(d) { return d.target.y; });
 }
 
-function update_speed() {
-  p = Number($(this).val());
-  clearInterval(interval);
-  time_interval = slowest_time - p;
-  interval = setInterval(run_Model, time_interval);
-}
-
-function get_parameters() {
-  tolerance = Number($("#soflow-t").val());
-  learning = Number($("#soflow-i").val());
-  rewire = Number($("#soflow-u").val());
-}
-
-function update_para() {
-  p = Number($(this).val());
-  name = $(this).attr("id");
-  if (name == "soflow-t") {
-    tolerance = p;
-  } else if (name == "soflow-i") {
-    learning = p;
-  } else {
-    rewire = p;
-  }
-}
-
 function default_para() {
-  $('#soflow-t option[value="0.4"]').attr('selected', 'selected');
+  $("#tolerance").val(0.4);
+  showValue(0.4, "trange");
   tolerance = 0.4;
-  $('#soflow-i option[value="0.8"]').attr('selected', 'selected');
+  $("#learning").val(0.8);
+  showValue(0.8, "lrange");
   learning = 0.8;
-  $('#soflow-u option[value="0.9"]').attr('selected', 'selected');
+  $("#post").val(0.8);
+  showValue(0.8, "prange");
+  post = 0.8;
+  $("#rewire").val(0.9);
+  showValue(0.9, "arange");
   rewire = 0.9;
 }
 
 function start_all() {
   running = 1;
+  valid_data = 1;
   // $("#start-text").fadeOut();
 }
 
