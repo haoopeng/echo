@@ -322,11 +322,13 @@ function update_para() {
 }
 
 function default_para() {
-  $('#soflow-t option[value="0.4"]').attr('selected', 'selected');
+  // for jQuery-1.7.1
+  // $('#soflow-t option[value="0.4"]').attr('selected', 'selected');
+  $("#soflow-t").val(0.4);
   tolerance = 0.4;
-  $('#soflow-i option[value="0.8"]').attr('selected', 'selected');
+  $("#soflow-i").val(0.8);
   learning = 0.8;
-  $('#soflow-u option[value="0.9"]').attr('selected', 'selected');
+  $("#soflow-u").val(0.9);
   rewire = 0.9;
 }
 

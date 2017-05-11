@@ -4,48 +4,22 @@
 
 <head>
 <link type="text/css" rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <link type="text/css" rel="stylesheet" href="main.css"/>
-<script type="text/javascript" src="jquery-1.7.1.min.js" charset="utf-8"></script>
-<script type="text/javascript" src="jquery.flot.min.js" charset="utf-8"></script>
+<link type="text/css" rel="stylesheet" href="jBox.css"/>
+<script type="text/javascript" src="jBox.min.js"></script>
+<script type="text/javascript" src="jquery-2.2.4.min.js"></script>
+<script type="text/javascript" src="jquery.flot.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="d3.v4.min.js" charset="utf-8"></script>
 <script type="text/javascript" src="d3-scale-chromatic.v1.min.js" charset="utf-8"></script>
 
 <script type="text/javascript">
-function showValue(newValue, span)
-{
-  if (newValue == "0") {
-    $("#"+span).html("0.0");
-  } else if (newValue == "1") {
-    $("#"+span).html("1.0");
-  } else {
-    document.getElementById(span).innerHTML = newValue;
-  }
-}
-</script>
-
-
-<script type="text/javascript">
-$(document).ready(function() {
-// Tooltip only Text
-$("i.fa.fa-question-circle-o").hover(function(){
-        // Hover over code
-        var title = $(this).attr('title');
-        $(this).data('tipText', title).removeAttr('title');
-        $('<p class="tooltip"></p>')
-        .text(title)
-        .appendTo('body')
-        .fadeIn('slow');
-}, function() {
-        // Hover out code
-        $(this).attr('title', $(this).data('tipText'));
-        $('.tooltip').remove();
-}).mousemove(function(e) {
-        var mousex = e.pageX + 10; //Get X coordinates
-        var mousey = e.pageY + 10; //Get Y coordinates
-        $('.tooltip')
-        .css({ top: mousey, left: mousex })
-});
-});
+  $(document).ready(function() {
+    new jBox('Tooltip', {
+      attach: 'i.fa.fa-question-circle-o'
+    });
+  });
 </script>
 
 <meta property="og:title" content="EchoDemo" />
@@ -60,6 +34,7 @@ $("i.fa.fa-question-circle-o").hover(function(){
 </head>
 
 <body>
+
 <div id="center">
 
   <div id="title">
@@ -71,70 +46,140 @@ $("i.fa.fa-question-circle-o").hover(function(){
     <a href="http://www.facebook.com/sharer.php?u=http://bl.ocks.org/haoopeng/raw/055662c96ec770be1930574cfe1553f2/" target="_blank"><img src="https://simplesharebuttons.com/images/somacro/facebook.png" alt="Facebook" /></a>
   </div>
 
-  <div id="container">
+  <div id="demo" class="carousel slide" data-ride="carousel" data-interval="false">
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+      <li data-target="#demo" data-slide-to="0" class="active"></li>
+      <li data-target="#demo" data-slide-to="1"></li>
+    </ol>
 
-    <div id="controls">
-      <button id="default-button">Default</button>
-      <span style="font-size:15px">Advanced Parameters</span><br/><br/>
-      <div id="para_line">
-        <i class="fa fa-question-circle-o" aria-hidden="true" title="Messages reflecting opinions within this range from an agent’s own opinion are considered as concordant, otherwise as discordant. Concordant messages can influence an agent’s own opinion. Furthermore, an agent will occasionally unfriend neighbors who post discordant messages."></i> Tolerance:
-        <select id="soflow-t">
-          <option value="0.2">Low</option>
-          <option value="0.4" selected="selected">Medium</option>
-          <option value="1.0">High</option>
-        </select>
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner" role="listbox">
+      <div class="item active">
+        <div id="container">
+          <div id="controls">
+            <button id="default-button">Default</button>
+            <span style="font-size:15px">Advanced Parameters</span><br/><br/>
+            <div id="para_line">
+              <i class="fa fa-question-circle-o" aria-hidden="true" title="Messages reflecting opinions within this range from an agent’s own opinion are considered as concordant, otherwise as discordant. Concordant messages can influence an agent’s own opinion. Furthermore, an agent will occasionally unfriend neighbors who post discordant messages."></i> Tolerance:
+              <select id="soflow-t">
+                <option value="0.2">Low</option>
+                <option value="0.4" selected="selected">Medium</option>
+                <option value="1.0">High</option>
+              </select>
+            </div>
+            <div id="para_line"><i class="fa fa-question-circle-o" aria-hidden="true" title="An agent’s opinion is updated to become a little more similar, on average, to those reflected in concordant messages from neighbors. The learning rate controls the strength of this influence."></i> Influence:
+              <select id="soflow-i">
+                <option value="0">Off</option>
+                <option value="0.2">Weak</option>
+                <option value="0.8" selected="selected">Strong</option>
+              </select>
+            </div>
+            <div id="para_line"><i class="fa fa-question-circle-o" aria-hidden="true" title="This parameter regulates how often an agent will unfriend a neighbor who posts a discordant message, and replace it with a randomly selected new friend."></i> Unfriending:
+              <select id="soflow-u">
+                <option value="0">Never</option>
+                <option value="0.5">Sometimes</option>
+                <option value="0.9" selected="selected">Often</option>
+              </select>
+            </div>
+          </div>
+
+          <div id="legend">
+            Progressive<span id="right">Conservative</span>
+            <img src="./RdBu.png" width="100%" height="20" alt="RdBu" style="max-width:100%;">
+            <ul>
+              <li>Less Popular<span class="symbol small"></span></li>
+              <li>More Popular<span class="symbol large"></span></li>
+            </ul>
+          </div>
+
+          <div id="plot">
+            <div id="plot-title">&nbsp;<i class="fa fa-question-circle-o" aria-hidden="true" title="This plot tracks how the opinions of an agent’s friends become more or less different from the agent’s own opinion, on average. Decreasing diversity indicates an echo-chamber effect."></i> Average Diversity of Friend Opinions</div>
+            <div id="epicurves"></div>
+            <div id="plot-xlable">Time</div>
+          </div>
+
+          <div id="graph-layout">
+            <!-- <span id="start-text">Click Start button to start!</span> -->
+            <button id="start-button">Start</button>
+            <button id="stop-button">Stop</button>
+            <button id="reset-button">Reset</button>
+            <span id="speed-box">Speed:</ br><input id="speed" type="range" min="0" max = "199" value="100" step="1" /></span>
+          </div>
+
+          <div id="chatting">
+          </div>
+          <script type="text/javascript" src="main.js"></script>
+        </div>
       </div>
-      <div id="para_line"><i class="fa fa-question-circle-o" aria-hidden="true" title="An agent’s opinion is updated to become a little more similar, on average, to those reflected in concordant messages from neighbors. The learning rate controls the strength of this influence."></i> Influence:
-        <select id="soflow-i">
-          <option value="0">Off</option>
-          <option value="0.2">Weak</option>
-          <option value="0.8" selected="selected">Strong</option>
-        </select>
+
+      <div class="item">
+        <div id="container">
+          <h3 align="center">Tutorial 01</h3>
+          <p>Hello World!</p>
+          <p>Under construction...</p>
+        </div>
       </div>
-      <div id="para_line"><i class="fa fa-question-circle-o" aria-hidden="true" title="This parameter regulates how often an agent will unfriend a neighbor who posts a discordant message, and replace it with a randomly selected new friend."></i> Unfriending:
-        <select id="soflow-u">
-          <option value="0">Never</option>
-          <option value="0.5">Sometimes</option>
-          <option value="0.9" selected="selected">Often</option>
-        </select>
+
+      <div class="item">
+        <div id="container">
+          <h3 align="center">Tutorial 02</h3>
+          <p>Hello World!</p>
+          <p>Under construction...</p>
+        </div>
       </div>
-    </div>
 
-    <div id="legend">
-      Progressive<span id="right">Conservative</span>
-      <!-- src = "https://raw.githubusercontent.com/d3/d3-scale-chromatic/master/img/RdBu.png" -->
-      <img src="./RdBu.png" width="100%" height="20" alt="RdBu" style="max-width:100%;">
-      <ul>
-        <li>Less Popular<span class="symbol small"></span></li>
-        <li>More Popular<span class="symbol large"></span></li>
-      </ul>
-    </div>
+      <div class="item">
+        <div id="container">
+          <h3 align="center">Tutorial 03</h3>
+          <p>Hello World!</p>
+          <p>Under construction...</p>
+        </div>
+      </div>
 
-    <div id="plot">
-      <div id="plot-title">&nbsp;<i class="fa fa-question-circle-o" aria-hidden="true" title="This plot tracks how the opinions of an agent’s friends become more or less different from the agent’s own opinion, on average. Decreasing diversity indicates an echo-chamber effect."></i> Average Diversity of Friend Opinions</div>
-      <div id="epicurves"></div>
-      <div id="plot-xlable">Time</div>
-    </div>
+      <div class="item">
+        <div id="container">
+          <h3 align="center">Tutorial 04</h3>
+          <p>Hello World!</p>
+          <p>Under construction...</p>
+        </div>
+      </div>
 
-    <div id="graph-layout">
-      <!-- <span id="start-text">Click Start button to start!</span> -->
-      <button id="start-button">Start</button>
-      <button id="stop-button">Stop</button>
-      <button id="reset-button">Reset</button>
-      <span id="speed-box">Speed:</ br><input id="speed" type="range" min="0" max = "199" value="100" step="1" /></span>
-    </div>
+      <div class="item">
+        <div id="container">
+          <h3 align="center">Tutorial 05</h3>
+          <p>Hello World!</p>
+          <p>Under construction...</p>
+        </div>
+      </div>
 
-    <div id="chatting">
-    </div>
+      <div class="item">
+        <div id="container">
+          <h3 align="center">Tutorial 06</h3>
+          <p>Hello World!</p>
+          <p>Under construction...</p>
+        </div>
+      </div>
 
-    <script type="text/javascript" src="main.js"></script>
+    </div>
+    <!-- Left and right controls -->
+    <a class="left carousel-control" href="#demo" role="button" data-slide="prev">
+      <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="right carousel-control" href="#demo" role="button" data-slide="next">
+      <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
 
   </div>
+
   <div id="credits">
-    <span style="float: left"><img src="//assets.iu.edu/brand/1.x/block-iu.png" height="16" width="13" alt="IUB" align="top">&nbsp; <a id="copy" href="https://www.iu.edu/copyright/index.html">Copyright &copy; 2017</a></span><span id="right"><a href="https://github.com/haoopeng/Social-Media-Echo-Chamber">Code</a> by <a href="http://haoopeng.github.io/">Hao Peng</a>, inspired by <a href="http://bl.ocks.org/ccattuto/raw/5892995/">this</a> and <a href="https://github.com/yy/dviz-course">D3 course</a>, adviced by <a href="http://cnets.indiana.edu/fil/">Filippo Menczer</a> and <a href="http://www.colorlessgreen.info/">Kazutoshi Sasahara</a></span>
+    <span style="float: left"><img src="//assets.iu.edu/brand/1.x/block-iu.png" height="16" width="13" alt="IUB" align="top">&nbsp; <a id="copy" href="https://www.iu.edu/copyright/index.html">Copyright &copy; 2017</a></span><span id="right"><a href="https://github.com/haoopeng/Social-Media-Echo-Chamber">Code</a> by <a href="http://haoopeng.github.io/">Hao Peng</a>, inspired by <a href="http://bl.ocks.org/ccattuto/raw/5892995/">this</a> and <a href="https://github.com/yy/dviz-course">D3 course</a>, advised by <a href="http://cnets.indiana.edu/fil/">Filippo Menczer</a> and <a href="http://www.colorlessgreen.info/">Kazutoshi Sasahara</a></span>
   </div>
 
 </div>
+
 </body>
 
 </html>

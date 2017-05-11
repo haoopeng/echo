@@ -3,13 +3,13 @@ body {
 }
 
 div#center {
-  width: 1042px;
+  width: 1040px;
   margin: auto;
   position: relative;
 }
 
 div#title {
-  width: 1042px;
+  width: 1040px;
   font-size: 25px;
   text-align: center;
   color: #666;
@@ -37,7 +37,7 @@ div#share-buttons {
 }
 
 div#container {
-  width: 1020px;
+  width: 1018px;
   height: 660px;
   border: 1px solid #eee;
   margin: 10px;
@@ -45,8 +45,8 @@ div#container {
 
 div#controls {
   float: left;
-  height: 140px;
-  width: 260px;
+  height: 160px;
+  width: 280px;
   margin: 20px;
   margin-top: 40px;
   margin-bottom: 0px;
@@ -57,35 +57,28 @@ div#controls {
   border: 1px solid #ccc;
 }
 
-/*div#controls-advanced {
-  font-size: 23px;
-  height: 90px;
-  margin-top: 10px;
-  padding-right: 40px;
-  border: 1px solid #ccc;
-}*/
-
 div#para_line {
   font-size: 15px;
   margin-bottom: 10px;
 }
 
-span#trange, #prange, #arange, #lrange {
-  width: 50px;
-  padding-left: 2px;
-  padding-right: 2px;
-  border: 1px solid #aaa;
-}
-
-input#tolerance, #learning, #post, #rewire {
-  height: 9px;
-  width: 90px;
+select#soflow-t, #soflow-i, #soflow-u {
+  background-position: 97% center;
+  background-repeat: no-repeat;
+  border: 1px solid #AAA;
+  color: #555;
+  overflow: hidden;
+  padding: 5px 10px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 80px;
+  font-size: 12px;
 }
 
 div#legend {
   float: left;
-  width: 250px;
-  height: 120px;
+  width: 300px;
+  height: 160px;
   margin: 20px;
   margin-top: 40px;
   margin-bottom: 0px;
@@ -114,7 +107,7 @@ span#right {
 .symbol.large  { width: 18px; height: 18px; }
 
 div#plot {
-  float: left;
+  float: right;
   width: 325px;
   height: 200px;
   background: #fff;
@@ -139,21 +132,10 @@ div#plot-xlable {
   font-size: 15px;
 }
 
-/*div#counters {
-  float: left;
-  left: 100px;
-  height: 200px;
-  font-size: 14px;
-  position: relative;
-  top: 45px;
-  margin-top: 20px;
-  margin-bottom: 20px;
-}*/
-
 div#graph-layout {
   float: left;
   height: 400px;
-  width: 630px;
+  width: 625px;
   margin: 20px;
   background: #fafafa;
   border: 1px solid #eee;
@@ -174,18 +156,6 @@ div#chatting {
   font-size: 12px;
 }
 
-
-/*span#counter_text {
-  color: #666;
-  font-size: 20px;
-}*/
-
-/*span#opinion, span#agent, span#iterate {
-  font-size: 36px;
-  font-weight: bold;
-  color: #735817;
-}*/
-
 circle.node {
   stroke: #000;
   stroke-width: 1px;
@@ -198,17 +168,9 @@ line.link {
   stroke-width: 1px;
 }
 
-/*span#start-text {
-  float: left;
-  font-size: 20px;
-  text-align: left;
-  color: #666;
-  padding: 5px;
-}*/
-
 button {
   float: left;
-  font-size: 23px;
+  font-size: 20px;
 }
 
 button#reset-button {
@@ -228,12 +190,12 @@ button#stop-button {
 
 button#default-button {
   margin-top: 0px;
-  font-size: 12px;
+  font-size: 11px;
 }
 
 span#speed-box {
   float: left;
-  height: 30px;
+  height: 32px;
   text-align: center;
   font-size: 12px;
   width: 100px;
@@ -241,8 +203,8 @@ span#speed-box {
 }
 
 input#speed {
-  float: center;
   width: 80px;
+  margin: 0 auto;
 }
 
 a {
@@ -253,7 +215,7 @@ a {
 
 a#copy {
   text-decoration: none;
-  /*font-size: 14px;*/
+  font-size: 14px;
   color: #990000;
 }
 .tooltip {
@@ -275,18 +237,19 @@ a#copy {
 
 div#credits {
   text-align: left;
-  font-size: 12px;
+  font-size: 14px;
   padding: 10px;
 }
 
-select#soflow-t, #soflow-i, #soflow-u {
-  background-position: 97% center;
-  background-repeat: no-repeat;
-  border: 1px solid #AAA;
-  color: #555;
-  overflow: hidden;
-  padding: 5px 10px;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  width: 80px;
+.carousel-indicators li { visibility: hidden; }
+
+.carousel-control {
+    z-index: 10;
+    top: 2%;
+    width: 30px; // no more gray thing
+    font-family: 'Helvetica Neue', Arial, sans-serif;
 }
+.carousel-control.left,
+.carousel-control.right { background: none }
+.carousel-control.left { left: -40px; }
+.carousel-control.right { right: -40px; }
