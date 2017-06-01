@@ -94,8 +94,8 @@ body, h1, h2, h3, h4, h5, h6 {
 }
 
 .tutorial-section-even {
-    height: 900px;
+    height: 800px;
     padding: 20px;
-    padding-top: 80px;
+    padding-top: 100px;
     background: #fff;
 }
