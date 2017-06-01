@@ -1,184 +1,350 @@
 <!DOCTYPE html>
-<meta charset="utf-8"/>
 <html>
-
 <head>
+
+<title>Social Media Echo Chamber</title>
+
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1">
+<meta property="og:title" content="EchoDemo" />
+<meta property="og:description" content="How echo chambers emerge from social media" />
+<meta property="og:url" content="http://bl.ocks.org/haoopeng/raw/055662c96ec770be1930574cfe1553f2/" />
+<meta property="og:image" content="http://bl.ocks.org/haoopeng/raw/055662c96ec770be1930574cfe1553f2/EchoDemo.jpg" />
+<meta property="og:type" content="website" />
+
+<link href="favicon.ico" rel="shortcut icon" type="image/x-icon"/>
 <link type="text/css" rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link href='http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,100italic,300italic,400italic,700italic,900italic' rel='stylesheet' type='text/css'>
+<link type="text/css" rel="stylesheet" href="bootstrap.min.css">
 <link type="text/css" rel="stylesheet" href="main.css"/>
 <link type="text/css" rel="stylesheet" href="jBox.css"/>
-<script type="text/javascript" src="jBox.min.js"></script>
+<link type="text/css" rel="stylesheet" href="scrolling-nav.css">
 <script type="text/javascript" src="jquery-2.2.4.min.js"></script>
 <script type="text/javascript" src="jquery.flot.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="jquery.easing.min.js"></script>
+<script type="text/javascript" src="bootstrap.min.js"></script>
+<!-- put jBox.js below jquery.js -->
+<script type="text/javascript" src="jBox.min.js"></script>
+<script type="text/javascript" src="scrolling-nav.js"></script>
 <script type="text/javascript" src="d3.v4.min.js" charset="utf-8"></script>
 <script type="text/javascript" src="d3-scale-chromatic.v1.min.js" charset="utf-8"></script>
 
 <script type="text/javascript">
   $(document).ready(function() {
     new jBox('Tooltip', {
-      attach: 'i.fa.fa-question-circle-o'
+      attach: 'i.fa.fa-question-circle-o',
+      theme: 'TooltipDark',
+      width: 350
     });
   });
 </script>
 
-<meta property="og:title" content="EchoDemo" />
-<meta property="og:description" content="How echo chambers emerge from social media" />
-<meta property="og:url" content="http://bl.ocks.org/haoopeng/raw/055662c96ec770be1930574cfe1553f2/" />
-<meta property="og:image" content="http://bl.ocks.org/haoopeng/raw/055662c96ec770be1930574cfe1553f2/EchoDemo.jpg" />
-<meta property="og:type" content="website" />
-<link href="favicon.ico" rel="shortcut icon" type="image/x-icon"/>
-
-<title>Social Media Echo Chamber</title>
-
 </head>
 
-<body>
+<!-- <body> -->
+<body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
 
-<div id="center">
-
-  <div id="title">
-    <span>EchoDemo</span><br/>
-    <span id="subtitle">How echo chambers emerge from social media</span>
-  </div>
-  <div id="share-buttons">
-    <a href="https://twitter.com/share?url=http://bl.ocks.org/haoopeng/raw/055662c96ec770be1930574cfe1553f2/&amp;text=Echo%20Chamber%20Demo&amp;hashtags=SocialMediaEchoChamber" target="_blank"><img src="https://simplesharebuttons.com/images/somacro/twitter.png" alt="Twitter" /></a>
-    <a href="http://www.facebook.com/sharer.php?u=http://bl.ocks.org/haoopeng/raw/055662c96ec770be1930574cfe1553f2/" target="_blank"><img src="https://simplesharebuttons.com/images/somacro/facebook.png" alt="Facebook" /></a>
-  </div>
-
-  <div id="demo" class="carousel slide" data-ride="carousel" data-interval="false">
-    <!-- Indicators -->
-    <ol class="carousel-indicators">
-      <li data-target="#demo" data-slide-to="0" class="active"></li>
-      <li data-target="#demo" data-slide-to="1"></li>
-    </ol>
-
-    <!-- Wrapper for slides -->
-    <div class="carousel-inner" role="listbox">
-      <div class="item active">
-        <div id="container">
-          <div id="controls">
-            <button id="default-button">Default</button>
-            <span style="font-size:15px">Advanced Parameters</span><br/><br/>
-            <div id="para_line">
-              <i class="fa fa-question-circle-o" aria-hidden="true" title="Messages reflecting opinions within this range from an agent’s own opinion are considered as concordant, otherwise as discordant. Concordant messages can influence an agent’s own opinion. Furthermore, an agent will occasionally unfriend neighbors who post discordant messages."></i> Tolerance:
-              <select id="soflow-t">
-                <option value="0.2">Low</option>
-                <option value="0.4" selected="selected">Medium</option>
-                <option value="1.0">High</option>
-              </select>
+    <!-- Navigation -->
+    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand page-scroll" href="#page-top">EchoDemo</a>
             </div>
-            <div id="para_line"><i class="fa fa-question-circle-o" aria-hidden="true" title="An agent’s opinion is updated to become a little more similar, on average, to those reflected in concordant messages from neighbors. The learning rate controls the strength of this influence."></i> Influence:
-              <select id="soflow-i">
-                <option value="0">Off</option>
-                <option value="0.2">Weak</option>
-                <option value="0.8" selected="selected">Strong</option>
-              </select>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse navbar-ex1-collapse">
+                <ul class="nav navbar-nav">
+                    <li class="hidden">
+                        <a class="page-scroll" href="#page-top"></a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#tutorial01">Tutorial 01</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#tutorial02">Tutorial 02</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#tutorial03">Tutorial 03</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#tutorial04">Tutorial 04</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#tutorial05">Tutorial 05</a>
+                    </li>
+                </ul>
             </div>
-            <div id="para_line"><i class="fa fa-question-circle-o" aria-hidden="true" title="This parameter regulates how often an agent will unfriend a neighbor who posts a discordant message, and replace it with a randomly selected new friend."></i> Unfriending:
-              <select id="soflow-u">
-                <option value="0">Never</option>
-                <option value="0.5">Sometimes</option>
-                <option value="0.9" selected="selected">Often</option>
-              </select>
+        </div>
+    </nav>
+
+    <!-- Intro Section -->
+    <section id="intro" class="intro-section">
+      <div class="container">
+        <div class="row">
+          <div id="demo-title">
+            <div class="col-sm-10 col-xs-12">
+                <h4>How echo chambers emerge from social media</h4>
+            </div>
+            <div class="col-sm-2 col-xs-12">
+                <a href="https://twitter.com/share?url=http://bl.ocks.org/haoopeng/raw/055662c96ec770be1930574cfe1553f2/&amp;text=Echo%20Chamber%20Demo&amp;hashtags=SocialMediaEchoChamber" target="_blank"><img src="https://simplesharebuttons.com/images/somacro/twitter.png" alt="Twitter" /></a>
+                <a href="http://www.facebook.com/sharer.php?u=http://bl.ocks.org/haoopeng/raw/055662c96ec770be1930574cfe1553f2/" target="_blank"><img src="https://simplesharebuttons.com/images/somacro/facebook.png" alt="Facebook" /></a>
+            </div>
+          </div>
+        </div>
+
+        <div id="demo-box">
+          <div class="row">
+            <div class="col-sm-4 col-xs-12">
+                <div id="demo-controls">
+                  <div id="para-title">
+                    <button id="default-button">Default</button>Advanced Parameters
+                  </div>
+                  <div id="para-line">
+                    <i class="fa fa-question-circle-o" aria-hidden="true" title="Messages reflecting opinions within this range from an agent’s own opinion are considered as concordant, otherwise as discordant. Concordant messages can influence an agent’s own opinion. Furthermore, an agent will occasionally unfriend neighbors who post discordant messages."></i> Tolerance:&nbsp;&nbsp;
+                    <select id="soflow-t">
+                      <option value="0.2">Low</option>
+                      <option value="0.4" selected="selected">Medium</option>
+                      <option value="1.0">High</option>
+                    </select>
+                  </div>
+                  <div id="para-line"><i class="fa fa-question-circle-o" aria-hidden="true" title="An agent’s opinion is updated to become more similar, on average, to those reflected in concordant messages from neighbors. The influence controls how fast this happens."></i> Influence:&nbsp;&nbsp;
+                    <select id="soflow-i">
+                      <option value="0">Off</option>
+                      <option value="0.2">Weak</option>
+                      <option value="0.8" selected="selected">Strong</option>
+                    </select>
+                  </div>
+                  <div id="para-line"><i class="fa fa-question-circle-o" aria-hidden="true" title="This parameter regulates how often an agent will unfriend a neighbor who posts a discordant message, and replace it with a randomly selected new friend."></i> Unfriending:&nbsp;&nbsp;
+                    <select id="soflow-u">
+                      <option value="0">Never</option>
+                      <option value="0.5">Sometimes</option>
+                      <option value="0.9" selected="selected">Often</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+
+            <div class="col-sm-4 col-xs-12">
+                <div id="demo-legend">
+                    Progressive<span id="demo-right">Conservative</span>
+                    <img src="./RdBu.png" width="100%" height="20" alt="RdBu" style="max-width:100%;">
+                    <div id="para-line"></div>
+                    <div id="para-line">
+                      Less Popular<span class="symbol small"></span>
+                    </div>
+                    <div id="para-line">
+                      More Popular<span class="symbol large"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-4 col-xs-12">
+              <div id="demo-plot">
+                <div id="plot-title">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-question-circle-o" aria-hidden="true" title="This plot tracks how the opinions of an agent’s friends become more or less different from the agent’s own opinion, on average. Decreasing diversity indicates an echo-chamber effect."></i> Average Diversity of Friend Opinions</div>
+                <div id="demo-epicurves"></div>
+                <div id="plot-xlable">Time</div>
+              </div>
             </div>
           </div>
 
-          <div id="legend">
-            Progressive<span id="right">Conservative</span>
-            <img src="./RdBu.png" width="100%" height="20" alt="RdBu" style="max-width:100%;">
-            <ul>
-              <li>Less Popular<span class="symbol small"></span></li>
-              <li>More Popular<span class="symbol large"></span></li>
-            </ul>
-          </div>
+          <div class="row">
+            <div class="col-sm-8 col-xs-12">
+              <div id="demo-graph-layout">
+                <!-- <span id="start-text">Click Start button to start!</span> -->
+                <button id="start-button">Start</button>
+                <button id="stop-button">Stop</button>
+                <button id="reset-button">Reset</button>
+                <span id="speed-box">Speed:</ br><input id="speed" type="range" min="0" max = "199" value="100" step="1" /></span>
+              </div>
+            </div>
 
-          <div id="plot">
-            <div id="plot-title">&nbsp;<i class="fa fa-question-circle-o" aria-hidden="true" title="This plot tracks how the opinions of an agent’s friends become more or less different from the agent’s own opinion, on average. Decreasing diversity indicates an echo-chamber effect."></i> Average Diversity of Friend Opinions</div>
-            <div id="epicurves"></div>
-            <div id="plot-xlable">Time</div>
-          </div>
-
-          <div id="graph-layout">
-            <!-- <span id="start-text">Click Start button to start!</span> -->
-            <button id="start-button">Start</button>
-            <button id="stop-button">Stop</button>
-            <button id="reset-button">Reset</button>
-            <span id="speed-box">Speed:</ br><input id="speed" type="range" min="0" max = "199" value="100" step="1" /></span>
-          </div>
-
-          <div id="chatting">
+            <div class="col-sm-4 col-xs-12">
+              <div id="demo-chatting">
+              </div>
+            </div>
           </div>
           <script type="text/javascript" src="main.js"></script>
         </div>
       </div>
+    </section>
 
-      <div class="item">
-        <div id="container">
-          <h3 align="center">Tutorial 01</h3>
-          <p>Hello World!</p>
-          <p>Under construction...</p>
+    <section id="tutorial01" class="tutorial-section-odd">
+        <div class="container">
+          <div id="tutorial-box">
+            <div class="row">
+                <div class="col-xs-12">
+                    <h3>Parameter Setting</h3>
+                    <hr>
+                    <ul>
+                      <li>Tolerance: <code>Medium</code></li>
+                      <li>Influence: <code>Off</code></li>
+                      <li>Unfriending: <code>Never</code></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <h3>Result</h3>
+                    <hr>
+                    <img class="img-responsive" src="tutorial01.png" alt="" width="300">
+                </div>
+            </div>
+            <br/>
+            <div class="row">
+                <div class="col-xs-12">
+                  <p class="lead">Without influence and unfriending, agents are exposed to diverse opinions but their own opinions do not change, and the underlying network structure stays the same.</p>
+                </div>
+            </div>
+          </div>
+        </div>
+    </section>
+
+    <section id="tutorial02" class="tutorial-section-even">
+        <div class="container">
+          <div id="tutorial-box">
+            <div class="row">
+                <div class="col-xs-12">
+                    <h3>Parameter Setting</h3>
+                    <hr>
+                    <ul>
+                      <li>Tolerance: <code>Medium</code></li>
+                      <li>Influence: <code>Strong</code></li>
+                      <li>Unfriending: <code>Never</code></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <h3>Result</h3>
+                    <hr>
+                    <img class="img-responsive" src="tutorial02.png" alt="" width="300">
+                </div>
+            </div>
+            <br/>
+            <div class="row">
+                <div class="col-xs-12">
+                  <p class="lead">Without unfriending, the network structure remains unchanged and agents are exposed to diverse opinions. However, influence causes agents’ opinions to change based on these exposures. Depending on the initial conditions and on the tolerance, the network converges either to a homogeneous state where all (or almost all) agents have a moderate opinion, or to a state where two (or more) diverse opinions coexist.</p>
+                </div>
+            </div>
+          </div>
+        </div>
+    </section>
+
+    <section id="tutorial03" class="tutorial-section-odd">
+        <div class="container">
+          <div id="tutorial-box">
+            <div class="row">
+                <div class="col-xs-12">
+                    <h3>Parameter Setting</h3>
+                    <hr>
+                    <ul>
+                      <li>Tolerance: <code>Medium</code></li>
+                      <li>Influence: <code>Off</code></li>
+                      <li>Unfriending: <code>Often</code></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <h3>Result</h3>
+                    <hr>
+                    <img class="img-responsive" src="tutorial03.png" alt="" width="300">
+                </div>
+            </div>
+            <br/>
+            <div class="row">
+                <div class="col-xs-12">
+                  <p class="lead">Without influence, opinions do not change. However, the unfriending process allows the agents to slowly sort themselves into a few homogeneous groups.</p>
+                </div>
+            </div>
+          </div>
+        </div>
+    </section>
+
+    <section id="tutorial04" class="tutorial-section-even">
+        <div class="container">
+          <div id="tutorial-box">
+            <div class="row">
+                <div class="col-xs-12">
+                    <h3>Parameter Setting</h3>
+                    <hr>
+                    <ul>
+                      <li>Tolerance: <code>Medium</code></li>
+                      <li>Influence: <code>Strong</code></li>
+                      <li>Unfriending: <code>Often</code></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <h3>Result</h3>
+                    <hr>
+                    <img class="img-responsive" src="tutorial04.png" alt="" width="300">
+                </div>
+            </div>
+            <br/>
+            <div class="row">
+                <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
+                  <p class="lead">When agents are influenced by their friends with similar opinions and can unfriend those with different opinions, the network quickly converges into two or more segregated and homogeneous echo-chambers. The number depends on the tolerance, as long as it is not too high: the smaller the tolerance, the more echo chambers.</p>
+                </div>
+            </div>
+          </div>
+        </div>
+    </section>
+
+    <section id="tutorial05" class="tutorial-section-odd">
+        <div class="container">
+          <div id="tutorial-box">
+            <div class="row">
+                <div class="col-xs-12">
+                    <h3>Parameter Setting</h3>
+                    <hr>
+                    <ul>
+                      <li>Tolerance: <code>High</code></li>
+                      <li>Influence: <code>Strong</code></li>
+                      <li>Unfriending: <code>Often</code></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <h3>Result</h3>
+                    <hr>
+                    <img class="img-responsive" src="tutorial05.png" alt="" width="300">
+                </div>
+            </div>
+            <br/>
+            <div class="row">
+                <div class="col-xs-12">
+                  <p class="lead">With high tolerance, unfriending has small effect. Influence causes the system to quickly converge to a single group with homogeneous opinions.</p>
+                </div>
+            </div>
+          </div>
+        </div>
+    </section>
+
+    <div id="footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-2 col-sm-12">
+            <div id="copyright">
+              <img src="//assets.iu.edu/brand/1.x/block-iu.png" height="16" width="13" alt="IUB" align="top">&nbsp; <a id="copy" href="https://www.iu.edu/copyright/index.html">Copyright &copy; 2017</a>
+            </div>
+          </div>
+          <div class="col-md-10 col-sm-12">
+            <div id="author">
+              <a href="https://github.com/haoopeng/Social-Media-Echo-Chamber">Code</a> by <a href="http://haoopeng.github.io/">Hao Peng</a>, inspired by <a href="http://bl.ocks.org/ccattuto/raw/5892995/">this</a> and <a href="https://github.com/yy/dviz-course">D3 course</a>, advised by <a href="http://cnets.indiana.edu/fil/">Filippo Menczer</a> and <a href="http://www.colorlessgreen.info/">Kazutoshi Sasahara</a>
+            </div>
+          </div>
         </div>
       </div>
-
-      <div class="item">
-        <div id="container">
-          <h3 align="center">Tutorial 02</h3>
-          <p>Hello World!</p>
-          <p>Under construction...</p>
-        </div>
-      </div>
-
-      <div class="item">
-        <div id="container">
-          <h3 align="center">Tutorial 03</h3>
-          <p>Hello World!</p>
-          <p>Under construction...</p>
-        </div>
-      </div>
-
-      <div class="item">
-        <div id="container">
-          <h3 align="center">Tutorial 04</h3>
-          <p>Hello World!</p>
-          <p>Under construction...</p>
-        </div>
-      </div>
-
-      <div class="item">
-        <div id="container">
-          <h3 align="center">Tutorial 05</h3>
-          <p>Hello World!</p>
-          <p>Under construction...</p>
-        </div>
-      </div>
-
-      <div class="item">
-        <div id="container">
-          <h3 align="center">Tutorial 06</h3>
-          <p>Hello World!</p>
-          <p>Under construction...</p>
-        </div>
-      </div>
-
     </div>
-    <!-- Left and right controls -->
-    <a class="left carousel-control" href="#demo" role="button" data-slide="prev">
-      <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-      <span class="sr-only">Previous</span>
-    </a>
-    <a class="right carousel-control" href="#demo" role="button" data-slide="next">
-      <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-      <span class="sr-only">Next</span>
-    </a>
-
-  </div>
-
-  <div id="credits">
-    <span style="float: left"><img src="//assets.iu.edu/brand/1.x/block-iu.png" height="16" width="13" alt="IUB" align="top">&nbsp; <a id="copy" href="https://www.iu.edu/copyright/index.html">Copyright &copy; 2017</a></span><span id="right"><a href="https://github.com/haoopeng/Social-Media-Echo-Chamber">Code</a> by <a href="http://haoopeng.github.io/">Hao Peng</a>, inspired by <a href="http://bl.ocks.org/ccattuto/raw/5892995/">this</a> and <a href="https://github.com/yy/dviz-course">D3 course</a>, advised by <a href="http://cnets.indiana.edu/fil/">Filippo Menczer</a> and <a href="http://www.colorlessgreen.info/">Kazutoshi Sasahara</a></span>
-  </div>
-
-</div>
 
 </body>
 
