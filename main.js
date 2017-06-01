@@ -1,6 +1,6 @@
 // var width = "100%", height = 600;
-var width = document.getElementById("graph-layout").offsetWidth;
-var height = document.getElementById("graph-layout").offsetHeight - document.getElementById("speed-box").offsetHeight;
+var width = document.getElementById("demo-graph-layout").offsetWidth;
+var height = document.getElementById("demo-graph-layout").offsetHeight - document.getElementById("speed-box").offsetHeight;
 
 var colors = d3.scaleSequential(d3.interpolateRdBu).domain([-1, 1]);
 
@@ -26,9 +26,9 @@ var plotOptions = {
     series: { shadowSize: 0 }
 };
 
-var plot = $.plot($("#epicurves"), [], plotOptions);
+var plot = $.plot($("#demo-epicurves"), [], plotOptions);
 
-var svg = d3.select("#graph-layout").append("svg")
+var svg = d3.select("#demo-graph-layout").append("svg")
     .attr("width", width)
     .attr("height", height);
 
@@ -151,7 +151,7 @@ function run_Model() {
       chat_msg_two = "User " + t_node.name + " unfollows " + "user " + del_node.name + ", follows " + "user " + add_node.name + ".<br/>";
     }
   }
-  $("#chatting").append(chat_msg_one + chat_msg_two + chat_msg_three + "<br/>");
+  $("#demo-chatting").append(chat_msg_one + chat_msg_two + chat_msg_three +"<br/>");
   showChatting();
   // highlight the newly established link
   update_network(t_node, t_link);
@@ -164,7 +164,7 @@ function run_Model() {
 
 function showChatting() {
   // Prior to getting your chatting.
-  var chatting = document.getElementById('chatting');
+  var chatting = document.getElementById('demo-chatting');
   var shouldScroll = chatting.scrollTop + chatting.clientHeight === chatting.scrollHeight;
   // After getting your chatting.
   if (!shouldScroll) {
@@ -346,7 +346,7 @@ function reset_all() {
   stop_all();
   count = 0;
   timeseries.data = [];
-  $("#chatting").html("");
+  $("#demo-chatting").html("");
   showChatting();
   //creates a random graph on n nodes and m links
   [nodes, links, adj_list] = createRandomNet(n, m);

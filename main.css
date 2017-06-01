@@ -1,34 +1,28 @@
-body {
-  font-family: Sans-Serif;
+
+/*.demo-container {
+    width: 1040px;
+    margin: auto;
+}*/
+
+div#demo-box {
+  border: 1px solid #eee;
+  margin: 10px;
 }
 
-div#center {
-  width: 1040px;
-  margin: auto;
-  position: relative;
+div#tutorial-box {
+  border: 1px solid #eee;
+  padding: 30px;
+  padding-top: 0px;
+  padding-bottom: 0px;
 }
 
-div#title {
-  width: 1040px;
-  font-size: 25px;
+div#demo-title {
   text-align: center;
   color: #666;
 }
 
-span#subtitle {
-  font-size: 20px;
-}
-
-div#share-buttons {
-  width: 100px;
-  float: right;
-  position: absolute;
-  left: 960px;
-  top: 35px;
-  z-index: 10;
-}
-
-#share-buttons img {
+#demo-title img {
+  margin-top: 10px;
   width: 20px;
   padding: 2px;
   border: 0;
@@ -36,20 +30,10 @@ div#share-buttons {
   display: inline;
 }
 
-div#container {
-  width: 1018px;
-  height: 660px;
-  border: 1px solid #eee;
-  margin: 10px;
-}
-
-div#controls {
-  float: left;
+div#demo-controls {
   height: 160px;
-  width: 280px;
   margin: 20px;
-  margin-top: 40px;
-  margin-bottom: 0px;
+  margin-bottom: 0;
   text-align: right;
   padding: 20px;
   padding-top: 10px;
@@ -57,8 +41,12 @@ div#controls {
   border: 1px solid #ccc;
 }
 
-div#para_line {
+div#para-title {
   font-size: 15px;
+  margin-bottom: 15px;
+}
+
+div#para-line {
   margin-bottom: 10px;
 }
 
@@ -71,31 +59,22 @@ select#soflow-t, #soflow-i, #soflow-u {
   padding: 5px 10px;
   text-overflow: ellipsis;
   white-space: nowrap;
-  width: 80px;
-  font-size: 12px;
+  width: 70px;
+  font-size: 10px;
 }
 
-div#legend {
-  float: left;
-  width: 300px;
+div#demo-legend {
   height: 160px;
   margin: 20px;
-  margin-top: 40px;
-  margin-bottom: 0px;
-  position: relative;
+  margin-bottom: 0;
   padding: 20px;
   border: 1px solid #ccc;
   background: #fafafa;
-  font-size: 15px;
+  text-align: left;
 }
-
-span#right {
-  float: right;
-}
-
-#legend ul li { display: inline; float: left; margin: 0 15px 0 0; text-align: left; }
 
 .symbol {
+  float: right;
   border-radius: 50%;
   border: 2px solid #000000;
   display: block;
@@ -106,54 +85,49 @@ span#right {
 .symbol.small { width: 10px; height: 10px; }
 .symbol.large  { width: 18px; height: 18px; }
 
-div#plot {
-  float: right;
-  width: 325px;
+div#demo-plot {
   height: 200px;
   background: #fff;
   margin: 20px;
-  margin-bottom: 0px;
-  margin-left: 0px;
 }
 
-div#epicurves {
+div#demo-epicurves {
   height: 180px;
 }
 
 div#plot-title {
   height: 20px;
   text-align: center;
-  font-size: 15px;
 }
 
 div#plot-xlable {
   height: 10px;
   text-align: right;
-  font-size: 15px;
 }
 
-div#graph-layout {
-  float: left;
-  height: 400px;
-  width: 625px;
+div#demo-graph-layout {
+  height: 480px;
   margin: 20px;
+  margin-bottom: 0;
   background: #fafafa;
   border: 1px solid #eee;
   clear: both;
   position: relative;
 }
 
-div#chatting {
-  float: right;
-  height: 400px;
-  width: 320px;
+div#demo-chatting {
+  height: 480px;
   margin: 20px;
-  margin-left: 0px;
   background: #fafafa;
   border: 1px solid #eee;
   position: relative;
   overflow: auto;
   font-size: 12px;
+  text-align: left;
+}
+
+span#demo-right {
+  float: right;
 }
 
 circle.node {
@@ -170,35 +144,34 @@ line.link {
 
 button {
   float: left;
-  font-size: 20px;
+  font-size: 16px;
+  height: 30px;
 }
 
 button#reset-button {
-  height: 32px;
   color: #666;
 }
 
 button#start-button {
-  height: 32px;
   color: #008000;
 }
 
 button#stop-button {
-  height: 32px;
   color: #FF0000;
 }
 
 button#default-button {
   margin-top: 0px;
-  font-size: 11px;
+  font-size: 10px;
+  height: 20px;
 }
 
 span#speed-box {
   float: left;
-  height: 32px;
+  height: 30px;
   text-align: center;
-  font-size: 12px;
-  width: 100px;
+  font-size: 10px;
+  width: 90px;
   border: 1px solid #aaa;
 }
 
@@ -209,47 +182,23 @@ input#speed {
 
 a {
   text-decoration: none;
-  /*font-size: 14px;*/
   color: #00c6ff;
 }
 
 a#copy {
   text-decoration: none;
-  font-size: 14px;
   color: #990000;
 }
-.tooltip {
-  display: block;
-  position: absolute;
-  max-width: 255px;
-  border: 1px solid #333;
-  background-color: #161616;
-  border-radius: 5px;
-  padding: 10px;
-  color: #fff;
-  font-size: 12px;
-  /*text-align: justify;
-  -webkit-hyphens: auto;
-  -moz-hyphens: auto;
-  -ms-hyphens: auto;
-  hyphens: auto;*/
+
+div#footer {
+  background-color: #f8f8f8;
+  padding: 50px;
+  text-align: center;
 }
 
-div#credits {
-  text-align: left;
-  font-size: 14px;
-  padding: 10px;
+div#copyright {
+  margin-bottom: 10px;
 }
 
-.carousel-indicators li { visibility: hidden; }
-
-.carousel-control {
-    z-index: 10;
-    top: 2%;
-    width: 30px; // no more gray thing
-    font-family: 'Helvetica Neue', Arial, sans-serif;
+div#author {
 }
-.carousel-control.left,
-.carousel-control.right { background: none }
-.carousel-control.left { left: -40px; }
-.carousel-control.right { right: -40px; }
