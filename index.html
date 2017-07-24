@@ -64,19 +64,19 @@
                         <a class="page-scroll" href="#page-top"></a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="#tutorial01">Tutorial 01</a>
+                        <a class="page-scroll" href="#scenario01">Scenario 01</a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="#tutorial02">Tutorial 02</a>
+                        <a class="page-scroll" href="#scenario02">Scenario 02</a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="#tutorial03">Tutorial 03</a>
+                        <a class="page-scroll" href="#scenario03">Scenario 03</a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="#tutorial04">Tutorial 04</a>
+                        <a class="page-scroll" href="#scenario04">Scenario 04</a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="#tutorial05">Tutorial 05</a>
+                        <a class="page-scroll" href="#scenario05">Scenario 05</a>
                     </li>
                 </ul>
             </div>
@@ -174,56 +174,48 @@
       </div>
     </section>
 
-    <section id="tutorial01" class="tutorial-section-odd">
+    <section id="scenario01" class="tutorial-section-odd">
         <div class="container">
           <div id="tutorial-box">
             <div class="row">
                 <div class="col-xs-12">
                     <h3>Parameter Setting</h3>
-                    <hr>
                     <ul>
                       <li>Tolerance: <code>Medium</code></li>
                       <li>Influence: <code>Off</code></li>
                       <li>Unfriending: <code>Never</code></li>
                     </ul>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-xs-12">
-                    <h3>Result</h3>
                     <hr>
-                    <img class="img-responsive" src="tutorial01.png" alt="" width="300">
                 </div>
             </div>
-            <br/>
             <div class="row">
                 <div class="col-xs-12">
                   <p class="lead">Without influence and unfriending, agents are exposed to diverse opinions but their own opinions do not change, and the underlying network structure stays the same.</p>
                 </div>
             </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <hr>
+                    <img class="img-responsive" src="scenario01.svg" alt="" width="800">
+                </div>
+            </div>
+            <br/>
           </div>
         </div>
     </section>
 
-    <section id="tutorial02" class="tutorial-section-even">
+    <section id="scenario02" class="tutorial-section-even">
         <div class="container">
           <div id="tutorial-box">
             <div class="row">
                 <div class="col-xs-12">
                     <h3>Parameter Setting</h3>
-                    <hr>
                     <ul>
                       <li>Tolerance: <code>Medium</code></li>
                       <li>Influence: <code>Strong</code></li>
                       <li>Unfriending: <code>Never</code></li>
                     </ul>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-xs-12">
-                    <h3>Result</h3>
                     <hr>
-                    <img class="img-responsive" src="tutorial02.png" alt="" width="300">
                 </div>
             </div>
             <br/>
@@ -232,99 +224,102 @@
                   <p class="lead">Without unfriending, the network structure remains unchanged and agents are exposed to diverse opinions. However, influence causes agents’ opinions to change based on these exposures. Depending on the initial conditions and on the tolerance, the network converges either to a homogeneous state where all (or almost all) agents have a moderate opinion, or to a state where two (or more) diverse opinions coexist.</p>
                 </div>
             </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <hr>
+                    <img class="img-responsive" src="scenario02.svg" alt="" width="700">
+                </div>
+            </div>
           </div>
         </div>
     </section>
 
-    <section id="tutorial03" class="tutorial-section-odd">
+    <section id="scenario03" class="tutorial-section-odd">
         <div class="container">
           <div id="tutorial-box">
             <div class="row">
                 <div class="col-xs-12">
                     <h3>Parameter Setting</h3>
-                    <hr>
                     <ul>
                       <li>Tolerance: <code>Medium</code></li>
                       <li>Influence: <code>Off</code></li>
                       <li>Unfriending: <code>Often</code></li>
                     </ul>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-xs-12">
-                    <h3>Result</h3>
                     <hr>
-                    <img class="img-responsive" src="tutorial03.png" alt="" width="300">
                 </div>
             </div>
-            <br/>
             <div class="row">
                 <div class="col-xs-12">
                   <p class="lead">Without influence, opinions do not change. However, the unfriending process allows the agents to slowly sort themselves into a few homogeneous groups.</p>
                 </div>
             </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <hr>
+                    <img class="img-responsive" src="scenario03.svg" alt="" width="800">
+                </div>
+            </div>
+            <br/>
           </div>
         </div>
     </section>
 
-    <section id="tutorial04" class="tutorial-section-even">
+    <section id="scenario04" class="tutorial-section-even">
         <div class="container">
           <div id="tutorial-box">
             <div class="row">
                 <div class="col-xs-12">
                     <h3>Parameter Setting</h3>
-                    <hr>
                     <ul>
                       <li>Tolerance: <code>Medium</code></li>
                       <li>Influence: <code>Strong</code></li>
                       <li>Unfriending: <code>Often</code></li>
                     </ul>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-xs-12">
-                    <h3>Result</h3>
                     <hr>
-                    <img class="img-responsive" src="tutorial04.png" alt="" width="300">
                 </div>
             </div>
-            <br/>
             <div class="row">
                 <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
                   <p class="lead">When agents are influenced by their friends with similar opinions and can unfriend those with different opinions, the network quickly converges into two or more segregated and homogeneous echo-chambers. The number depends on the tolerance, as long as it is not too high: the smaller the tolerance, the more echo chambers.</p>
                 </div>
             </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <hr>
+                    <img class="img-responsive" src="scenario04.svg" alt="" width="600">
+                </div>
+            </div>
+            <br/>
           </div>
         </div>
     </section>
 
-    <section id="tutorial05" class="tutorial-section-odd">
+    <section id="scenario05" class="tutorial-section-odd">
         <div class="container">
           <div id="tutorial-box">
             <div class="row">
                 <div class="col-xs-12">
                     <h3>Parameter Setting</h3>
-                    <hr>
                     <ul>
                       <li>Tolerance: <code>High</code></li>
                       <li>Influence: <code>Strong</code></li>
                       <li>Unfriending: <code>Often</code></li>
                     </ul>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-xs-12">
-                    <h3>Result</h3>
                     <hr>
-                    <img class="img-responsive" src="tutorial05.png" alt="" width="300">
                 </div>
             </div>
-            <br/>
             <div class="row">
                 <div class="col-xs-12">
                   <p class="lead">With high tolerance, unfriending has small effect. Influence causes the system to quickly converge to a single group with homogeneous opinions.</p>
                 </div>
             </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <hr>
+                    <img class="img-responsive" src="scenario05.svg" alt="" width="600">
+                </div>
+            </div>
+            <br/>
           </div>
         </div>
     </section>
