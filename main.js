@@ -38,6 +38,7 @@ $("#soflow-i").on("change", update_para);
 $("#soflow-u").on("change", update_para);
 
 reset_all();
+$(document).ready(start_all);
 
 $("#start-button").click(start_all);
 $("#stop-button").click(stop_all);
