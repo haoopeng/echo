@@ -97,33 +97,33 @@ function run_Model() {
     if (Math.random() < post) {
       // post a msg reflecting its updated opinion;
       t_node.msg_opinion = t_node.opinion;
-      chat_msg_three = "User " + t_node.name + " posts a new message.<br/>";
+      chat_msg_three = transJS("PostMessage", {"t_node.name":t_node.name}) + "<br/>";
     } else {
       // randomly repost msg from one of its discordant messages;
       var repost_node = concordant_nodes[getRandomInt(0, concordant_nodes.length-1)]
       t_node.msg_opinion = repost_node.msg_opinion;
-      chat_msg_three = "User " + t_node.name + " reposts " + "user " + repost_node.name + "'s message.<br/>";
+      chat_msg_three = transJS("RepostMessage", {"t_node.name":t_node.name, "repost_node.name":repost_node.name}) + "<br/>";
     }
     if (learning > 0) {
-      chat_msg_one = "User " + t_node.name + " reads " + concordant_nodes.length + " messages.<br/>";
+      chat_msg_one = transJS("ReadMessage",{"t_node.name":t_node.name, "concordant_nodes.length":concordant_nodes.length}) + "<br/>";
       if (prev_opinion <= 0) {
         if (t_node.opinion < prev_opinion) {
-          chat_msg_one += "User " + t_node.name + " becomes a bit more progressive.<br/>";
+          chat_msg_one += transJS("BecomeMoreProgressice",{"t_node.name":t_node.name}) + "<br/>";
         } else {
-          chat_msg_one += "User " + t_node.name + " becomes a bit less progressive.<br/>";
+          chat_msg_one += transJS("BecomeLessProgressice",{"t_node.name":t_node.name}) + "<br/>";
         }
       }
       if (prev_opinion > 0) {
         if (t_node.opinion < prev_opinion) {
-          chat_msg_one += "User " + t_node.name + " becomes a bit less conservative.<br/>";
+          chat_msg_one += transJS("BecomeLessConservative",{"t_node.name":t_node.name}) + "<br/>";
         } else {
-          chat_msg_one += "User " + t_node.name + " becomes a bit more conservative.<br/>";
+          chat_msg_one += transJS("BecomeMoreConservative",{"t_node.name":t_node.name}) + "<br/>";
         }
       }
     }
   } else { //no concordant nodes, just post a new message.
       t_node.msg_opinion = t_node.opinion;
-      chat_msg_three = "User " + t_node.name + " posts a new message.<br/>";
+      chat_msg_three = transJS("PostMessage", {"t_node.name":t_node.name}) + "<br/>";
   }
   // rewire one discordant link to other nodes;
   var t_link = false;
@@ -149,7 +149,7 @@ function run_Model() {
       del_node.k--;
       t_link.target = add_node;
       add_node.k++;
-      chat_msg_two = "User " + t_node.name + " unfollows " + "user " + del_node.name + ", follows " + "user " + add_node.name + ".<br/>";
+      chat_msg_two = transJS("Unfollow", {"t_node.name":t_node.name,"del_node.name":del_node.name,"add_node.name":add_node.name}) + "<br/>";
     }
   }
   $("#demo-chatting").append(chat_msg_one + chat_msg_two + chat_msg_three +"<br/>");
