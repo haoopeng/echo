@@ -95,6 +95,6 @@ var textSet = {
         "BecomeLessConservative": "ユーザー[t_node.name]はやや保守的ではなくなりました。",
         "BecomeMoreConservative": "ユーザー[t_node.name]はやや保守的になりました。",
         "Unfollow": "ユーザー[t_node.name]がユーザー[del_node.name]をアンフォローし、ユーザー[add_node.name]をフォローしました。",
-        "TranslatersName": "Japanese translation by Ayahito Saji and <a href='http://www.colorlessgreen.info/'>Kazutoshi Sasahara</a>"
+        "TranslatersName": "Japanese translation by <a href='https://github.com/ayahito-saji'>Ayahito Saji</a> and <a href='http://www.colorlessgreen.info/'>Kazutoshi Sasahara</a>"
     }
 }
