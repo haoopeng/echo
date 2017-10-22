@@ -7,7 +7,7 @@ var textSet = {
         "Default": "Default",
         "AdvancedParameters": "Advanced Parameters",
         "Tolerance": "Tolerance",
-        "ToleranceDiscription": "Messages reflecting opinions within this range from an agent’s own opinion are considered as concordant, otherwise as discordant. Concordant messages can influence an agent’s own opinion. Furthermore, an agent will occasionally unfriend neighbors who post discordant messages.",
+        "ToleranceDiscription": "Tolerance defines the agents’ tolerance to discordant messages. Messages reflecting opinions within this range from an agent’s own opinion are considered as concordant, otherwise as discordant. Concordant messages can influence an agent’s own opinion. Furthermore, an agent will occasionally unfriend neighbors who post discordant messages.",
         "Low": "Low",
         "Medium": "Medium",
         "High": "High",
