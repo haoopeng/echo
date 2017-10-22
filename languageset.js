@@ -95,7 +95,7 @@ var textSet = {
         "BecomeLessConservative": "L'utente [t_node.name] diventa un po' meno conservatore.",
         "BecomeMoreConservative": "L'utente [t_node.name] diventa un po' più conservatore.",
         "Unfollow": "L'utente [t_node.name] smette di seguire l'utente [del_node.name], segue l'utente [add_node.name].",
-        "TranslatersName": "Traduzione italiana a cura di <a href='http://glciampaglia.com'>Giovanni Luca Ciampaglia</a>."
+        "TranslatersName": "Traduzione italiana a cura di <a href='http://glciampaglia.com'>Giovanni Luca Ciampaglia</a> and <a href='http://cnets.indiana.edu/fil/'>Filippo Menczer</a>"
     },
     "japanese": {
         "Language": "日本語",
