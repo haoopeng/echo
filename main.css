@@ -63,6 +63,23 @@ select#soflow-t, #soflow-i, #soflow-u {
   font-size: 10px;
 }
 
+select#soflow-l {
+  position: absolute;
+  right: 50px;
+  top: 50%;
+  transform: translateY(-50%);
+  background-position: 97% center;
+  background-repeat: no-repeat;
+  border: 1px solid #AAA;
+  color: #555;
+  overflow: hidden;
+  padding: 5px 10px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 90px;
+  font-size: 10px;
+}
+
 div#demo-legend {
   height: 160px;
   margin: 20px;
