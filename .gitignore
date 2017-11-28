@@ -25,7 +25,6 @@ supp.pdf
 
 # Data files
 *.csv
-!language/language.csv
 *.tsv
 *.txt
 
