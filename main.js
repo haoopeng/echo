@@ -53,7 +53,7 @@ function run_Model() {
   if (running == 0) {
     return;
   }
-  // each time, randomly select a node, identify con/discordant nodes;
+  // each time, randomly select a node, divide its friends into con/discordant nodes;
   var t_node = nodes[getRandomInt(0, n-1)],
       concordant_nodes = [],
       discordant_nodes = [],
@@ -81,7 +81,7 @@ function run_Model() {
       }
     }
   }
-  // identify nodes to which current node will build a link.
+  // identify nodes to which current node will connect.
   for (l in nodes) {
     var n_t = nodes[l];
     if (n_t.name != t_node.name && discordant_nodes.indexOf(n_t) == -1 && concordant_nodes.indexOf(n_t) == -1) {
@@ -99,7 +99,7 @@ function run_Model() {
       t_node.msg_opinion = t_node.opinion;
       chat_msg_three = transJS("PostMessage", {"t_node.name":t_node.name}) + "<br/>";
     } else {
-      // randomly repost msg from one of its discordant messages;
+      // randomly repost msg from one of its concordant messages;
       var repost_node = concordant_nodes[getRandomInt(0, concordant_nodes.length-1)]
       t_node.msg_opinion = repost_node.msg_opinion;
       chat_msg_three = transJS("RepostMessage", {"t_node.name":t_node.name, "repost_node.name":repost_node.name}) + "<br/>";
@@ -125,7 +125,7 @@ function run_Model() {
       t_node.msg_opinion = t_node.opinion;
       chat_msg_three = transJS("PostMessage", {"t_node.name":t_node.name}) + "<br/>";
   }
-  // rewire one discordant link to other nodes;
+  // rewire one discordant link to other nodes (its non-friends);
   var t_link = false;
   if (discordant_nodes.length > 0) {
     if (Math.random() < rewire) {
