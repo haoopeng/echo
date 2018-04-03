@@ -1,9 +1,8 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-
 <title>Social Media Echo Chamber</title>
-
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1">
 <meta property="og:title" content="EchoDemo" />
@@ -19,27 +18,6 @@
 <link type="text/css" rel="stylesheet" href="css/main.css"/>
 <link type="text/css" rel="stylesheet" href="css/jBox.css"/>
 <link type="text/css" rel="stylesheet" href="css/scrolling-nav.css"/>
-<script type="text/javascript" src="js/jquery-2.2.4.min.js"></script>
-<script type="text/javascript" src="js/jquery.flot.min.js"></script>
-<script type="text/javascript" src="js/jquery.easing.min.js"></script>
-<script type="text/javascript" src="js/bootstrap.min.js"></script>
-<!-- put jBox.js below jquery.js -->
-<script type="text/javascript" src="js/jBox.min.js"></script>
-<script type="text/javascript" src="js/scrolling-nav.js"></script>
-<script type="text/javascript" src="js/d3.v4.min.js" charset="utf-8"></script>
-<script type="text/javascript" src="js/d3-scale-chromatic.v1.min.js" charset="utf-8"></script>
-<script type="text/javascript" src="js/languageset.js" charset="utf-8"></script>
-
-<script type="text/javascript">
-  $(document).ready(function() {
-    new jBox('Tooltip', {
-      attach: 'i.fa.fa-question-circle-o',
-      theme: 'TooltipDark',
-      width: 350
-    });
-  });
-</script>
-
 </head>
 
 <!-- <body> -->
@@ -171,7 +149,6 @@
               </div>
             </div>
           </div>
-          <script type="text/javascript" src="js/main.js"></script>
         </div>
       </div>
     </section>
@@ -331,7 +308,7 @@
         <div class="row">
           <div class="col-md-2 col-sm-12">
             <div id="copyright">
-              <p><img src="img/block-iu.png" height="16" width="13" alt="IUB" align="top">&nbsp; <a id="copy" href="https://www.iu.edu/copyright/index.html">Copyright &copy; 2017</a><br/></p>
+              <p><img src="//assets.iu.edu/brand/1.x/block-iu.png" height="16" width="13" alt="IUB" align="top">&nbsp; <a id="copy" href="https://www.iu.edu/copyright/index.html">Copyright &copy; 2017</a><br/></p>
               <p><a id="copy" href="http://www.nagoya-u.ac.jp/"><img src="img/NU_logo.png" height="22" width="38" alt="Nagoya Univ" border="0"></a></p>
               <p><a id="copy" href="http://www.jst.go.jp/kisoken/presto/en/index.html"><img src="img/presto_enS.jpg" height="26" width="74" alt="Presto" border="0"></a></p>
             </div>
@@ -346,7 +323,47 @@
       </div>
     </div>
 
+    <div id="info">
+      <i id="info-tab" class="fa fa-info-circle"></i>
+      <div id="info-inner">
+        <i id="info-close" class="fa fa-times"></i>
+        <div id="info-inner-inner">
+          <h1 class="lang-command">InfoTitle</h1>
+          <h2 class="lang-command">InfoIntroQ</h2>
+          <p class="lang-command">InfoIntroA</p>
+          <h2 class="lang-command">InfoRepresentQ</h2>
+          <p class="lang-command">InfoRepresentA</p>
+          <h2 class="lang-command">InfoHowQ</h2>
+          <p class="lang-command">InfoHowA</p>
+          <h2 class="lang-command">InfoInstructionsQ</h2>
+          <p class="lang-command">InfoInstructionsA</p>
+        </div>
+      </div>
+    </div>
+
+
+<script type="text/javascript" src="js/jquery-2.2.4.min.js"></script>
+<script type="text/javascript" src="js/jquery.flot.min.js"></script>
+<script type="text/javascript" src="js/jquery.easing.min.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<!-- put jBox.js below jquery.js -->
+<script type="text/javascript" src="js/jBox.min.js"></script>
+<script type="text/javascript" src="js/scrolling-nav.js"></script>
+<script type="text/javascript" src="js/d3.v4.min.js" charset="utf-8"></script>
+<script type="text/javascript" src="js/d3-scale-chromatic.v1.min.js" charset="utf-8"></script>
+<script type="text/javascript" src="js/languageset.js" charset="utf-8"></script>
+<script type="text/javascript" src="js/main.js"></script>
 <script type="text/javascript" src="js/language.js" charset="utf-8"></script>
+
+<script type="text/javascript">
+  $(document).ready(function() {
+    new jBox('Tooltip', {
+      attach: 'i.fa.fa-question-circle-o',
+      theme: 'TooltipDark',
+      width: 350
+    });
+  });
+</script>
 
 </body>
 
