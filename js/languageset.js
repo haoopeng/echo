@@ -191,7 +191,7 @@ var textSet = {
         "Scenario01Discription": "Without influence and unfriending, agents are exposed to diverse opinions but their own opinions do not change, and the underlying network structure stays the same.",
         "RepostMessage": "User [t_node.name] reposts user [repost_node.name]'s message.",
         "Tolerance": "Tolerance",
-        "TranslatersName": "",
+        "TranslatersName": " ",
         "Medium": "Medium",
         "Scenario": "Scenario",
         "ReadMessage": "User [t_node.name] reads [concordant_nodes.length] messages.",
