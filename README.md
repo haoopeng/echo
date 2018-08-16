@@ -1,4 +1,4 @@
-# Social-Media-Echo-Chamber
+# echo-demo
 
 This is an interactive demo illustrating how social media echo chambers emerge from users' social media sharing activity.
 
