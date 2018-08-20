@@ -18,14 +18,11 @@ var nodes, links, adj_list, simulation, svgLinks, svgNodes;
 var n = 100, // number of nodes
     m = 400; // number of links
 
-var avg_deviation;
-var timeseries = {color: "#000", data: []};
-
+var timeseries = new Array(n);
 var plotOptions = {
     xaxis: {min: 0},
     series: { shadowSize: 0 }
 };
-
 var plot = $.plot($("#demo-epicurves"), [], plotOptions);
 
 var svg = d3.select("#demo-graph-layout").append("svg")
@@ -158,9 +155,8 @@ function run_Model() {
   update_network(t_node, t_link);
   count += 1;
   avg_deviation = cal_avg_deviation();
-  timeseries.data.push([count, avg_deviation]);
-  update_strength();
-  update_plot();
+  update_strength(avg_deviation);
+  update_plot(count);
 }
 
 function showChatting() {
@@ -219,10 +215,10 @@ function update_network(t_node, t_link) {
       .attr("class", "node")
       .attr("r", function(d) { return 2 * Math.sqrt(d.k); })
       .style("fill", function(d) { return colors(d.opinion); })
-      .on("mouseover", function(d) {
-          $("#opinion").html(roundToTwo(d.opinion));
-          $("#agent").html(d.name);
-        })
+      // .on("mouseover", function(d) {
+      //     $("#opinion").html(roundToTwo(d.opinion));
+      //     $("#agent").html(d.name);
+      //   })
       .call(d3.drag()
             .on("start", dragstarted)
             .on("drag", dragged)
@@ -243,8 +239,11 @@ function update_network(t_node, t_link) {
   simulation.restart();
 }
 
-function update_plot() {
-  plot.setData([timeseries]);
+function update_plot(count) {
+  for (var i = 0; i < n; i++) {
+    timeseries[nodes[i].name].data.push([count, nodes[i].opinion]);
+  }
+  plot.setData(timeseries);
   plot.setupGrid();
   plot.draw();
 }
@@ -346,12 +345,15 @@ function stop_all() {
 function reset_all() {
   stop_all();
   count = 0;
-  timeseries.data = [];
   $("#demo-chatting").html("");
   showChatting();
   //creates a random graph on n nodes and m links
   [nodes, links, adj_list] = createRandomNet(n, m);
-
+  for (var i = 0; i < n; i++) {
+    timeseries[i] = [];
+    timeseries[i].data = [];
+    timeseries[i].color = colors(nodes[i].opinion);
+  }
 
   simulation = d3.forceSimulation()
     .force("link", d3.forceLink().id(function(d) { return d.index; }).distance(10).strength(0.1))
@@ -368,10 +370,10 @@ function reset_all() {
     .links(links);
 
   update_network();
-  update_plot();
+  update_plot(count);
 }
 
-function update_strength() {
+function update_strength(avg_deviation) {
     simulation.force("charge", d3.forceManyBody().strength(-1-avg_deviation*90));
 }
 

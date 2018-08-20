@@ -8,8 +8,27 @@ body, h1, h2, h3, h4, h5, h6 {
     font-weight: 700;
 }
 
-/*bootstrap's col-xs is when width < 768px*/
-/*style for small, medium and large size*/
+.intro-section {
+    height: 1880px;
+    padding-top: 110px;
+    background: #fff;
+}
+
+.tutorial-section-odd {
+    height: 700px;
+    padding: 20px;
+    padding-top: 100px;
+    background: #fff; /*#eee*/
+}
+
+.tutorial-section-even {
+    height: 820px;
+    padding: 20px;
+    padding-top: 100px;
+    background: #fff;
+}
+
+/*when screen is less than 768px, add these: */
 @media only screen and (min-width: 768px) {
     .navbar {
         padding: 20px 0;
@@ -56,8 +75,35 @@ body, h1, h2, h3, h4, h5, h6 {
     }
 }
 
-/*bootstrap's col-sm is when width < 992px*/
-/*style for medium and large size*/
+/*when it continue increases to 992px, add these: */
+@media only screen and (max-width: 992px) and (min-width: 768px){
+    div#demo-box {
+        font-size: 10px;
+    }
+    div#para-title {
+        font-size: 12px;
+    }
+    div#plot-title {
+        height: 12spx;
+        text-align: center;
+    }
+    div#demo-title {
+        margin-top: 30px;
+    }
+    #info-tab {
+        position: absolute;
+        right: 9%;
+        top: 34%;
+        font-size: 1.5em;
+    }
+    select#soflow-l {
+        right: 5%;
+        top: 50%;
+        width: 70px;
+    }
+}
+
+/*when it's larger than 992px, add these: */
 @media only screen and (min-width: 992px) {
     div#copyright {
         text-align: left;
@@ -66,36 +112,4 @@ body, h1, h2, h3, h4, h5, h6 {
     div#author {
         text-align: right;
     }
-}
-
-/*change the font of the first row (control, legend and plot) for small size*/
-/*the font of the first row are the same (large font) for extra small, medium, and large size*/
-@media only screen and (min-width: 768px) and (max-width: 992px){
-    div#demo-box {
-        font-size: 10px;
-    }
-
-    div#para-title {
-        font-size: 12px;
-    }
-}
-
-.intro-section {
-    height: 1880px;
-    padding-top: 110px;
-    background: #fff;
-}
-
-.tutorial-section-odd {
-    height: 700px;
-    padding: 20px;
-    padding-top: 100px;
-    background: #fff; /*#eee*/
-}
-
-.tutorial-section-even {
-    height: 820px;
-    padding: 20px;
-    padding-top: 100px;
-    background: #fff;
 }
