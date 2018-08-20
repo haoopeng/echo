@@ -2,7 +2,9 @@
 var width = document.getElementById("demo-graph-layout").offsetWidth;
 var height = document.getElementById("demo-graph-layout").offsetHeight - document.getElementById("speed-box").offsetHeight;
 
-var colors = d3.scaleSequential(d3.interpolateRdBu).domain([-1, 1]);
+var colors = d3.scaleSequential(d3.interpolateRdBu).domain([-1.0, 1.0]);
+var lineColors = d3.scaleSequential(d3.interpolateRainbow).domain([-1.0, 1.0]);
+
 
 var count = 0;
 var running = 0;
@@ -21,7 +23,8 @@ var n = 100, // number of nodes
 var timeseries = new Array(n);
 var plotOptions = {
     xaxis: {min: 0},
-    series: { shadowSize: 0 }
+    yaxis: {min: -1.1, max: 1.1},
+    series: {lines: {lineWidth: 0.8}, shadowSize: 0}
 };
 var plot = $.plot($("#demo-epicurves"), [], plotOptions);
 
@@ -352,7 +355,7 @@ function reset_all() {
   for (var i = 0; i < n; i++) {
     timeseries[i] = [];
     timeseries[i].data = [];
-    timeseries[i].color = colors(nodes[i].opinion);
+    timeseries[i].color = lineColors(nodes[i].opinion);
   }
 
   simulation = d3.forceSimulation()
