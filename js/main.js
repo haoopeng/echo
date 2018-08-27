@@ -5,7 +5,7 @@ var height = document.getElementById("demo-graph-layout").offsetHeight - documen
 var colors = d3.scaleSequential(d3.interpolateRdBu).domain([-1.0, 1.0]);
 // interpolateRdYlBu
 // var lineColors = d3.scaleSequential(d3.interpolateRainbow).domain([-1.0, 1.0]);
-
+// https://stackoverflow.com/questions/22893789/d3-color-scale-linear-with-multiple-colors
 
 var count = 0;
 var running = 0;
