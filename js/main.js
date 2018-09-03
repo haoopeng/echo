@@ -2,10 +2,15 @@
 var width = document.getElementById("demo-graph-layout").offsetWidth;
 var height = document.getElementById("demo-graph-layout").offsetHeight - document.getElementById("speed-box").offsetHeight;
 
-var colors = d3.scaleSequential(d3.interpolateRdBu).domain([-1.0, 1.0]);
+// var colors = d3.scaleSequential(d3.interpolateRdBu).domain([-1.0, 1.0]);
 // interpolateRdYlBu
-// var lineColors = d3.scaleSequential(d3.interpolateRainbow).domain([-1.0, 1.0]);
 // https://stackoverflow.com/questions/22893789/d3-color-scale-linear-with-multiple-colors
+// https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Gradients
+
+var range_min = -1.0;
+var middle = 0;
+var range_max = 1.0;
+var colors = d3.scaleLinear().domain([range_min, middle, range_max]).range(["red", "purple", "blue"]);
 
 var count = 0;
 var running = 0;
@@ -24,7 +29,7 @@ var n = 100, // number of nodes
 var timeseries = new Array(n);
 var plotOptions = {
     xaxis: {min: 0},
-    yaxis: {min: -1.1, max: 1.1, tickLength: 0},
+    yaxis: {min: range_min-0.1, max: range_max+0.1, tickLength: 0},
     series: {lines: {lineWidth: 0.8}, shadowSize: 0},
     grid: {
         hoverable: false,
@@ -393,7 +398,7 @@ function createRandomNet(n, m) {
   var adj_list = [];
   for (n in nodes) {
     nodes[n].k = 0;
-    var num = genRandomValue(-1, 1);
+    var num = genRandomValue(range_min, range_max);
     nodes[n].opinion = num;
     nodes[n].msg_opinion = num;
     adj_list[n] = [];
