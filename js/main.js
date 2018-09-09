@@ -13,6 +13,7 @@ var range_max = 1.0;
 var colors = d3.scaleLinear().domain([range_min, middle, range_max]).range(["red", "purple", "blue"]);
 
 var count = 0;
+var max_time = 2000;
 var running = 0;
 var slowest_time = 200;
 var remove_link = false;
@@ -163,14 +164,16 @@ function run_Model() {
       chat_msg_two = transJS("Unfollow", {"t_node.name":t_node.name,"del_node.name":del_node.name,"add_node.name":add_node.name}) + "<br/>";
     }
   }
-  $("#demo-chatting").append(chat_msg_one + chat_msg_two + chat_msg_three +"<br/>");
-  showChatting();
   // highlight the newly established link
   update_network(t_node, t_link);
-  count += 1;
   avg_deviation = cal_avg_deviation();
   update_strength(avg_deviation);
-  update_plot(count);
+  if (count < max_time) {
+    update_plot(count);
+    $("#demo-chatting").append(chat_msg_one + chat_msg_two + chat_msg_three +"<br/>");
+  }
+  showChatting();
+  count += 1;
 }
 
 function showChatting() {
