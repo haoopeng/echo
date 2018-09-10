@@ -14,18 +14,10 @@ body, h1, h2, h3, h4, h5, h6 {
     background: #fff;
 }
 
-.tutorial-section-odd {
-    height: 700px;
+.tutorial-section {
     padding: 20px;
     padding-top: 100px;
     background: #fff; /*#eee*/
-}
-
-.tutorial-section-even {
-    height: 820px;
-    padding: 20px;
-    padding-top: 100px;
-    background: #fff;
 }
 
 /*when screen is less than 768px, add these: */
