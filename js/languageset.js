@@ -55,7 +55,7 @@ var textSet = {
         "ParameterSetting": "Impostazione dei parametri",
         "Speed": "Velocità",
         "LessPopular": "Poco popolare",
-        "InfoIntroA": "EchoDemo è una simulazione computerizzata che dimostra come due meccanismi base dei media sociali --- l'influenzare le opinioni altrui e la rimozione (unfriending) di chi ha opinioni differenti dalle nostre --- possano produrre delle reti sociali polarizzata e segregate. Per maggiori dettagli consulta il nostro <a href='https://arxiv.org/abs/1905.03919'>articolo</a>."
+        "InfoIntroA": "EchoDemo è una simulazione computerizzata che dimostra come due meccanismi base dei media sociali --- l'influenzare le opinioni altrui e la rimozione (unfriending) di chi ha opinioni differenti dalle nostre --- possano produrre delle reti sociali polarizzata e segregate. Per maggiori dettagli consulta il nostro <a href='https://link.springer.com/article/10.1007/s42001-020-00084-7'>articolo</a>."
     },
     "japanese": {
         "PostMessage": "ユーザー[t_node.name]が新しいメッセージを投稿しました。",
@@ -113,7 +113,7 @@ var textSet = {
         "ParameterSetting": "パラメータ設定",
         "Speed": "速度",
         "LessPopular": "人気がない",
-        "InfoIntroA": "エコーデモは、ソーシャルメディアの2つの基本メカニズム（友人の意見から社会的影響を受ける、意見の合わない友人をアンフォローする）が、どのようにして偏極し分断された社会的ネットワークを生み出すのかをデモンストレーションするモデル・シミュレーションです。詳細は<a href='https://arxiv.org/abs/1905.03919'>論文</a>をご覧下さい。"
+        "InfoIntroA": "エコーデモは、ソーシャルメディアの2つの基本メカニズム（友人の意見から社会的影響を受ける、意見の合わない友人をアンフォローする）が、どのようにして偏極し分断された社会的ネットワークを生み出すのかをデモンストレーションするモデル・シミュレーションです。詳細は<a href='https://link.springer.com/article/10.1007/s42001-020-00084-7'>論文</a>をご覧下さい。"
     },
     "chinese": {
         "PostMessage": "用户[t_node.name]发布了一条新消息。",
@@ -171,7 +171,7 @@ var textSet = {
         "ParameterSetting": "参数设置",
         "Speed": "速度",
         "LessPopular": "不太受欢迎",
-        "InfoIntroA": "回音演示运用演示模型来展示社交网络的两种基本机制 --- （1）朋友间的观点互相影响（受影响度）；（2） 取消关注与自己观点不一致的人（取消关注）--- 如何造成社交网络的分化和隔离。详情请参考我们的<a href='https://arxiv.org/abs/1905.03919'>论文</a>。"
+        "InfoIntroA": "回音演示运用演示模型来展示社交网络的两种基本机制 --- （1）朋友间的观点互相影响（受影响度）；（2） 取消关注与自己观点不一致的人（取消关注）--- 如何造成社交网络的分化和隔离。详情请参考我们的<a href='https://link.springer.com/article/10.1007/s42001-020-00084-7'>论文</a>。"
     },
     "english": {
         "PostMessage": "User [t_node.name] posts a new message.",
@@ -229,6 +229,6 @@ var textSet = {
         "ParameterSetting": "Parameter Setting",
         "Speed": "Speed",
         "LessPopular": "Less Popular",
-        "InfoIntroA": "EchoDemo is a model simulation that demonstrates how two basic mechanisms of social media --- influencing friend opinions and unfriending people with different opinions --- can lead to polarized and segregated social networks. For more details check out our <a href='https://arxiv.org/abs/1905.03919'>paper</a>."
+        "InfoIntroA": "EchoDemo is a model simulation that demonstrates how two basic mechanisms of social media --- influencing friend opinions and unfriending people with different opinions --- can lead to polarized and segregated social networks. For more details check out our <a href='https://link.springer.com/article/10.1007/s42001-020-00084-7'>paper</a>."
     }
 }
