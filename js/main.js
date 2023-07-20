@@ -30,7 +30,11 @@ var n = 100, // number of nodes
 var timeseries = new Array(n);
 var plotOptions = {
     xaxis: {min: 0},
-    yaxis: {min: range_min-0.1, max: range_max+0.1, tickLength: 0},
+    yaxis: {min: range_min-0.1, max: range_max+0.1, tickLength: 0,
+      tickFormatter: function(val, axis) {
+        return ((val + 1) * 50) + '%';
+      }
+    },
     series: {lines: {lineWidth: 0.8}, shadowSize: 0},
     grid: {
         hoverable: false,

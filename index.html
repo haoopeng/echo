@@ -88,6 +88,13 @@
                   <div id="para-title">
                     <button id="default-button"><span class="lang-command">Default</span></button><span class="lang-command">AdvancedParameters</span>
                   </div>
+                  <div id="para-line"><i class="fa fa-question-circle-o" aria-hidden="true" title="$UnfriendingDiscription"></i> <span class="lang-command">Unfriending</span>:&nbsp;&nbsp;
+                    <select id="soflow-u">
+                      <option value="0" selected="selected">$Never</option>
+                      <option value="0.5">$Sometimes</option>
+                      <option value="0.9">$Often</option>
+                    </select>
+                  </div>
                   <div id="para-line"><i class="fa fa-question-circle-o" aria-hidden="true" title="$ToleranceDiscription"></i> <span class="lang-command">Tolerance</span>:&nbsp;&nbsp;
                     <select id="soflow-t">
                       <option value="0.2">$Low</option>
@@ -101,14 +108,7 @@
                       <option value="0.2">$Weak</option>
                       <option value="0.8" selected="selected">$Strong</option>
                     </select>
-                  </div>
-                  <div id="para-line"><i class="fa fa-question-circle-o" aria-hidden="true" title="$UnfriendingDiscription"></i> <span class="lang-command">Unfriending</span>:&nbsp;&nbsp;
-                    <select id="soflow-u">
-                      <option value="0" selected="selected">$Never</option>
-                      <option value="0.5">$Sometimes</option>
-                      <option value="0.9">$Often</option>
-                    </select>
-                  </div>
+                  </div>                  
                 </div>
               </div>
 
@@ -129,6 +129,16 @@
             <div class="col-sm-4 col-xs-12">
               <div id="demo-plot">
                 <div id="plot-title">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-question-circle-o" aria-hidden="true" title="$GraphDiscription"></i> <span class="lang-command">GraphTitle</span></div>
+                <div id="y-axis-label" style="position: absolute;
+                  transform: rotate(-90deg);
+                  transform-origin: center;
+                  top: 50%;
+                  left: -27px;
+                  text-align: center;
+                  font-size: 14px;
+                  font-weight: bold;">
+                  Conservatism
+                </div>
                 <div id="demo-epicurves"></div>
                 <div id="plot-xlable"><span class="lang-command">Time</span></div>
               </div>
