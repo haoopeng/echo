@@ -341,12 +341,12 @@ function update_para() {
 function default_para() {
   // for jQuery-1.7.1
   // $('#soflow-t option[value="0.4"]').attr('selected', 'selected');
-  $("#soflow-t").val(0.4);
-  tolerance = 0.4;
+  $("#soflow-t").val('1.0');
+  tolerance = 1.0;
   $("#soflow-i").val(0.8);
   learning = 0.8;
-  $("#soflow-u").val(0.9);
-  rewire = 0.9;
+  $("#soflow-u").val(0.0);
+  rewire = 0.0;
 }
 
 function start_all() {
