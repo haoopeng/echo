@@ -56,6 +56,39 @@ $("#start-button").click(start_all);
 $("#stop-button").click(stop_all);
 $("#reset-button").click(reset_all);
 $("#default-button").click(default_para);
+$("#screenshot-button").click(download_network);
+
+
+function download_network() {
+  const graph = document.querySelector("#demo-graph-layout svg");
+
+  const canvas = document.createElement("canvas");
+  canvas.width = graph.getAttribute('width');
+  canvas.height = graph.getAttribute('height');
+
+  const backgroundColor = 'rgb(249, 249, 249)';
+  let background = graph.querySelector('rect.background');
+
+  if (!background) {
+    background = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+    background.setAttribute('class', 'background');
+    background.setAttribute('width', '100%');
+    background.setAttribute('height', '100%');
+    graph.insertBefore(background, graph.firstChild);
+  }
+
+  background.setAttribute('fill', backgroundColor);
+  const svgString = new XMLSerializer().serializeToString(graph);
+
+  canvg(canvas, svgString);
+  
+  var dataURL = canvas.toDataURL("image/png"); 
+  
+  var downloadLink = document.createElement("a");
+  downloadLink.href = dataURL;
+  downloadLink.download = "image.png"; 
+  downloadLink.click();
+}
 
 var interval = setInterval(run_Model, time_interval);
 
