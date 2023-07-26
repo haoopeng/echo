@@ -10,7 +10,8 @@ var height = document.getElementById("demo-graph-layout").offsetHeight - documen
 var range_min = -1.0;
 var middle = 0;
 var range_max = 1.0;
-var colors = d3.scaleLinear().domain([range_min, middle, range_max]).range(["red", "purple", "blue"]);
+const rgbs = ['#00ffff', '#808080', '#ffff00']
+var colors = d3.scaleLinear().domain([range_min, middle, range_max]).range(rgbs);
 
 var count = 0;
 var max_time = 2000;
@@ -267,7 +268,7 @@ function update_network(t_node, t_link) {
   svgNodes = svg.selectAll("circle.node").data(nodes, function(d) { return d.index;})
       .enter().append("circle")
       .attr("class", "node")
-      .attr("r", function(d) { return 2 * Math.sqrt(d.k); })
+      .attr("r", function(d) { return 4 * Math.sqrt(d.k); })
       .style("fill", function(d) { return colors(d.opinion); })
       // .on("mouseover", function(d) {
       //     $("#opinion").html(roundToTwo(d.opinion));
