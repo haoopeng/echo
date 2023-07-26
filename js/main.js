@@ -10,7 +10,7 @@ var height = document.getElementById("demo-graph-layout").offsetHeight - documen
 var range_min = -1.0;
 var middle = 0;
 var range_max = 1.0;
-const rgbs = ['#00ffff', '#d0d0d0', '#ffff00']
+const rgbs = ['#ffd63e', '#b47487', '#6812d1']
 var colors = d3.scaleLinear().domain([range_min, middle, range_max]).range(rgbs);
 
 var count = 0;
