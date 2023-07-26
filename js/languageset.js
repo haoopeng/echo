@@ -4,9 +4,9 @@ var textSet = {
         "InfluenceDiscription": "L'opinione di un agente è aggiornata in modo tale da avvicinarsi alla media delle opinioni rispecchiate nei messaggi concordanti dei propri vicini. L'influenza controlla la velocità di tale processo.",
         "InfoRepresentQ": "Che cosa rappresenta la rete?",
         "InfoInstructionsQ": "Che cosa posso fare?",
-        "Title": "EchoDemo",
+        "Title": "EchoSim",
         "Stop": "Stop",
-        "InfoTitle": "The EchoDemo: FAQ",
+        "InfoTitle": "The EchoSim: FAQ",
         "Conservative": "Conservatore",
         "Start": "Via",
         "Theme": "Come si crea la polarizzazione sui social media",
@@ -29,7 +29,7 @@ var textSet = {
         "Unfriending": "Rompere l'amicizia",
         "Scenario02Discription": "Senza la rottura delle amicizie, la struttura della rete sociale rimane immutata e gli agenti sono esposti a opinioni eterogenee. Tuttavia, l'influenza sociale porta gli agenti a cambiare opinione in base all'esposizione ad opinioni diverse. A seconda delle condizioni iniziali e della tolleranza, la rete o converge ad uno stato omogeneo in cui tutti (o quasi tutti) gli agenti hanno un'opinione moderata, oppure ad uno stato in cui due o più opinioni opposte coesistono.  ",
         "Off": "Spento",
-        "InfoIntroQ": "Che cos'è EchoDemo?",
+        "InfoIntroQ": "Che cos'è EchoSim?",
         "Language": "Italiano",
         "Default": "Predefinito",
         "Sometimes": "A volte",
@@ -55,7 +55,7 @@ var textSet = {
         "ParameterSetting": "Impostazione dei parametri",
         "Speed": "Velocità",
         "LessPopular": "Poco popolare",
-        "InfoIntroA": "EchoDemo è una simulazione computerizzata che dimostra come due meccanismi base dei media sociali --- l'influenzare le opinioni altrui e la rimozione (unfriending) di chi ha opinioni differenti dalle nostre --- possano produrre delle reti sociali polarizzata e segregate. Per maggiori dettagli consulta il nostro <a href='https://link.springer.com/article/10.1007/s42001-020-00084-7'>articolo</a>."
+        "InfoIntroA": "EchoSim è una simulazione computerizzata che dimostra come due meccanismi base dei media sociali --- l'influenzare le opinioni altrui e la rimozione (unfriending) di chi ha opinioni differenti dalle nostre --- possano produrre delle reti sociali polarizzata e segregate. Per maggiori dettagli consulta il nostro <a href='https://link.springer.com/article/10.1007/s42001-020-00084-7'>articolo</a>."
     },
     "japanese": {
         "PostMessage": "ユーザー[t_node.name]が新しいメッセージを投稿しました。",
@@ -178,9 +178,9 @@ var textSet = {
         "InfluenceDiscription": "An agent’s opinion is updated to become more similar, on average, to those reflected in concordant messages from neighbors. The influence controls how fast this happens.",
         "InfoRepresentQ": "What does the network represent?",
         "InfoInstructionsQ": "What do I do?",
-        "Title": "EchoDemo",
+        "Title": "EchoSim",
         "Stop": "Stop",
-        "InfoTitle": "The EchoDemo: FAQ",
+        "InfoTitle": "The EchoSim: FAQ",
         "Conservative": "Against",
         "Start": "Start",
         "Theme": "How echo chambers emerge from social media",
@@ -203,7 +203,7 @@ var textSet = {
         "Unfriending": "Unfriending",
         "Scenario02Discription": "Without unfriending, the network structure remains unchanged and agents are exposed to diverse opinions. However, influence causes agents’ opinions to change based on these exposures. Depending on the initial conditions and on the tolerance, the network converges either to a homogeneous state where all (or almost all) agents have a moderate opinion, or to a state where two (or more) diverse opinions coexist.",
         "Off": "Off",
-        "InfoIntroQ": "What is EchoDemo?",
+        "InfoIntroQ": "What is EchoSim?",
         "Language": "English",
         "Default": "Default",
         "Sometimes": "Sometimes",
@@ -229,6 +229,6 @@ var textSet = {
         "ParameterSetting": "Parameter Setting",
         "Speed": "Speed",
         "LessPopular": "Less Popular",
-        "InfoIntroA": "EchoDemo is a model simulation that demonstrates how two basic mechanisms of social media --- influencing friend opinions and unfriending people with different opinions --- can lead to polarized and segregated social networks. For more details check out our <a href='https://link.springer.com/article/10.1007/s42001-020-00084-7'>paper</a>."
+        "InfoIntroA": "EchoSim is a model simulation that demonstrates how two basic mechanisms of social media --- influencing friend opinions and unfriending people with different opinions --- can lead to polarized and segregated social networks. For more details check out our <a href='https://link.springer.com/article/10.1007/s42001-020-00084-7'>paper</a>."
     }
 }
