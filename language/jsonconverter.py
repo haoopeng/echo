@@ -4,8 +4,8 @@ import codecs
 import csv
 import json
 import sys
-reload(sys)
-sys.setdefaultencoding('utf8')
+# reload(sys)
+# sys.setdefaultencoding('utf8')
 
 textSet = {}
 
