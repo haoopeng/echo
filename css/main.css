@@ -8,7 +8,7 @@ div#demo-box {
   border: 1px solid #eee;
 }
 
-div#tutorial-box {
+div.tutorial-box {
   border: 1px solid #eee;
   padding: 30px;
   padding-top: 0px;
@@ -45,7 +45,7 @@ div#para-title {
   margin-bottom: 15px;
 }
 
-div#para-line {
+div.para-line {
   margin-bottom: 10px;
 }
 
@@ -173,7 +173,7 @@ button#start-button {
 }
 
 button#stop-button {
-  color: #FF0000;
+  color: #E70303;
 }
 
 button#default-button {
@@ -198,12 +198,20 @@ input#speed {
 
 a {
   text-decoration: none;
-  color: #00c6ff;
+  color: #057B9B;
 }
 
-a#copy {
+p a {
+  text-decoration: underline;
+}
+
+a.copy {
   text-decoration: none;
   color: #990000;
+}
+
+.navbar-default .navbar-nav>li>a.page-scroll, .navbar-header>a.navbar-brand.page-scroll {
+  color: #717171;
 }
 
 div#footer {
