@@ -201,12 +201,16 @@ a {
   color: #057B9B;
 }
 
+p a {
+  text-decoration: underline;
+}
+
 a.copy {
   text-decoration: none;
   color: #990000;
 }
 
-.navbar-default .navbar-nav>li>a.page-scroll {
+.navbar-default .navbar-nav>li>a.page-scroll, .navbar-header>a.navbar-brand.page-scroll {
   color: #717171;
 }
 
